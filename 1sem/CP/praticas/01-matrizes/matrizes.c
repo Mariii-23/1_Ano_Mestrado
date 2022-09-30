@@ -17,6 +17,7 @@ void freeMatrix(float **matrix, size_t rows) {
   for (size_t i = 0; i < rows; i++) {
     free(matrix[i]);
   }
+  free(matrix);
 }
 
 void initRandom(float **matrix, size_t rows, size_t cols) {
@@ -30,7 +31,7 @@ void initRandom(float **matrix, size_t rows, size_t cols) {
 void printMatrix(float **matrix, size_t rows, size_t cols) {
   for (size_t r = 0; r < rows; r++) {
     for (size_t c = 0; c < cols; c++) {
-      printf("%f ", matrix[r][c]);
+      printf("%f ", (double) matrix[r][c]);
     }
     printf("\n");
   }
@@ -41,11 +42,13 @@ float **multipleMatrix(float **a, float **b, size_t rows, size_t cols) {
 
   for (size_t i = 0; i < rows; i++) {
     for (size_t j = 0; j < rows; j++) {
-      matrix[i][j] = 0;
+      float count = 0;
 
       for (size_t l = 0; l < cols; l++) {
-        matrix[i][j] += a[i][l] * b[l][j];
+        count += a[i][l] * b[l][j];
       }
+
+        matrix[i][j] = count;
     }
   }
 
@@ -53,7 +56,7 @@ float **multipleMatrix(float **a, float **b, size_t rows, size_t cols) {
 }
 
 int main(void) {
-  srand(time(0));
+  srand((unsigned int) time(0));
   float **matrix = createMatrix(SIZE, SIZE);
   float **matrixB = createMatrix(SIZE, SIZE);
 

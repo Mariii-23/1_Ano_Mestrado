@@ -1,0 +1,30 @@
+#+title: Guiao1
+
+#+begin_src latex
+T_exe = #I x CPI x T_cc
+#+end_src
+
+* Exercise 1
+a) Perfomance estimation
+
+   As instruções vão aumentar.
+
+b) Instructions estimation
+ instrucoes dentro do ciclo for mais "dentro"
+   - O2 :: 8 instruções
+   - sem O2 :: 45 instruções
+
+   - Gain :: 45/8 = 5.625
+
+c) Measure
+   calculado sem a flag -fno-omit-frame-pointer
+
+   CPI ver (contas do stor)
+
+|     | size |        Texe | #CC        | #I          | #I Estimated | Average CPI (Calculated) |
+| -O2 |  128 | 0.009695240 | 10,869,452 | 19,124,611  | 8*128³       | ---                      |
+| -O2 |  256 | 0.067764601 | 96,216,989 | 143,190,178 | 8*256³       | ---                      |
+| -O2 |  512 |      0.4406 | 1231978111 | 1109210508  | 8*512³       | 1.2                      |
+| -O0 |  512 | 0.792773606 | 2323008822 | 6082082300  | 45*512³      | 0.5                      |
+
+d) Accuracy of the #I estimation
