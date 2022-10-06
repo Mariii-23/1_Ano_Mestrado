@@ -1,0 +1,86 @@
+#+title:  Guiao2
+
+* Exercise 1
+a) Data local analysis
+   - spatial locality :: Matrix A
+
+   - tamanho do bloco que vamos buscar a cache para a main memory :: 64 bytes
+
+b) Estimation of data locality impact
+
+   - N * N * N/8 :: estimativa dos misses para a matrix A
+     - N :: é do nº linhas
+     - N * N/8 :: é nº de colunas * N/8 (quantas vai buscar de cada vez)
+       64/8 (double) = 8
+
+   - N^3 :: estimativa dos misses para a matrix B
+
+   - Number of level 1 chache misses for a NxN matrix :: N^3 + N^3/8
+
+   - Para a matriz o melhor era não haver cache porque está a usar a largura de banda. Vai sempre buscar 64 bytes para L1 e apenas a usar 1 byte. Está a gastar 8x mais largura de banda do que deveria usar.
+
+c) Improvement of spatial locality
+
+   file: matrizes.c
+
+d) Measure and discuss the results
+
+   - perf stat -e L1-dcache-load-misses -M cpi ./a.out
+
+     - Multiplicacao sem transposta
+       #+begin_src bash
+
+        Performance counter stats for './a.out':
+
+               12,973,641      L1-dcache-load-misses:u
+              975,562,880      INST_RETIRED.ANY:u        #      nan CPI
+              548,815,091      CPU_CLK_UNHALTED.THREAD:u
+
+              0.208610474 seconds time elapsed
+
+              0.205079000 seconds user
+              0.003343000 seconds sys
+
+
+
+       #+end_src
+
+       - Multiplicacao com transposta total
+
+        #+begin_src bash
+     Performance counter stats for './a.out':
+
+             9,276,744      L1-dcache-load-misses:u
+           843,377,750      INST_RETIRED.ANY:u        #      nan CPI
+           543,858,527      CPU_CLK_UNHALTED.THREAD:u
+
+           0.181745465 seconds time elapsed
+
+           0.181707000 seconds user
+           0.000000000 seconds sys
+
+        #+end_src
+
+       - Apenas o calculo da matriz
+#+begin_src bash
+
+ Performance counter stats for './a.out':
+
+            64,591      L1-dcache-load-misses:u
+        18,834,839      INST_RETIRED.ANY:u        #      nan CPI
+        17,280,352      CPU_CLK_UNHALTED.THREAD:u
+
+       0.015078677 seconds time elapsed
+
+       0.015003000 seconds user
+       0.000000000 seconds sys
+
+
+#+end_src
+
+    |   N | Version  |        Time | CPI | #I | L1_DMiss  | l1_DMiss (estimated) | Misss/#I |
+    | 512 | base()   | 0.181745465 |     |    | 9,276,744 |                      |          |
+    | 512 | transp() | 0.015078677 |     |    | 64,591    |                      |          |
+
+    e) se trocamos a ordem de A e B (for) o numero de misses aumenta?
+       porque?

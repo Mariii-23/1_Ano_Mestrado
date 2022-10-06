@@ -1,0 +1,53 @@
+#+title: Readme
+
+* Requisitos
+** Funcionais
+- descreve a funcionalidade  a ser disponibilizada aos usuários do sistema
+- nao deve mencionar qualquer technological issue
+- independente do design e da implementação
+
+*** Implicit requirement
+An implicit requirement is a requirement included by the
+development team, based on the domain knowledge that it
+possesses, in spite of not having been explicitly requested by
+the stakeholders.
+
+*** Explicit requirement
+the stakeholders.
+An explicit requirement refers to a requirement that was
+requested by the clients and that is represented in the
+documentation.
+
+** Não funcionais
+- Corresponde a um conjunto de restricoes impostas no sistema a ser desenvolvido
+
+- estabelece quao bonito, rapido ou reliable o sistema é
+
+- impoe tecnologias a ser usadas, standards,...
+
+- alternative terms: quality requirement or quality attribute
+
+- ~A non-functional requirement does not change the essence of the system functionalities~
+
+- The functional requirements remain the same, regardless of the non-functional requirements
+
+- os requisitos nao funcionais sao aplicados no sistema como um todo e nao como partes
+
+***  Usability
+- ease of use :: encontra se relacionado com a eficiencia da utilidade e com o mecanismo que reduz erros provenientes do utilizador
+- Personalisation ::  capacidade de adaptacao do sistema a gosto dos utilizadores
+- ease of learning ::  encontra-se preoupado com a maneira que os utilizadores encontram-se treinados para usar o sistemas
+- accessibility :: indica quão fácil é a usabilidade do sistema
+
+*** maintenance and support
+- o sistema encontra-se dividido em 4 partes :: preventive, corrective, perfective  and adaptive
+
+*** Legal
+- any system, regardless of the technology, has to respect the established laws
+
+
+** User and System  requirement
+- user requirement :: Representa:
+  - a functionality that the system is expected to provide to its users;
+  - a restriction that is applicable to the operation of that system.
+- system requirement :: constitutes a more detailed specification of a requirement, being generally a formal model of the system.
