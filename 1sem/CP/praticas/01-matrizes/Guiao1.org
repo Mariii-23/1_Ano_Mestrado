@@ -11,10 +11,20 @@ a) Perfomance estimation
 
 b) Instructions estimation
  instrucoes dentro do ciclo for mais "dentro"
+ salienta-se que a matrix usada era de 512 x 512
+
    - O2 :: 8 instruções
+     8 * N_matrix ^ 3
+     é elevado a 3 porque a complexidade é elevado ao cubo, isto é existem 3 ciclos for
+
+
+     8 * 512^3  => estimativa de instrucoes usadas
+
+
    - sem O2 :: 45 instruções
 
    - Gain :: 45/8 = 5.625
+
 
 c) Measure
    calculado sem a flag -fno-omit-frame-pointer
