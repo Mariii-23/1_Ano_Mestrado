@@ -51,3 +51,36 @@ documentation.
   - a functionality that the system is expected to provide to its users;
   - a restriction that is applicable to the operation of that system.
 - system requirement :: constitutes a more detailed specification of a requirement, being generally a formal model of the system.
+
+** Requirements engineering activities
+1. inception
+
+2. elicitation
+
+3. elaboration
+
+4. negotiation :: O que o cliente quer e o cliente quer pagar. Por isso nesta fase tem q existir
+
+5. documentation
+
+   Documentar os requisitos. Aqui fica completamente detalhado tanto o que se vai fazer como o cliente vai pagar
+
+6. validation
+
+   O cliente lê, aceita e assina.
+   "Provas a cabeca" -> por exemplo na web fazer prototipos (ex: figma)
+
+Management -> 2,3,4,5
+
+
+** Requiremente writing quality checklist
+What not to have/avoid?
+
+- ambguity
+- vaguie terminology
+- ilusions and fantasies
+- multiple requirements
+- design specifications
+- speculations
+- suggestions
+- projects plans

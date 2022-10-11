@@ -1,0 +1,37 @@
+#+title: Guiao3
+
+
+* Exercise 1
+
+a)
+
+
+  What is the estimated performance gain of this optimisation?
+
+
+b)
+
+* Exercise 2 - Vectorisation
+** Vectorisation
+- ijk :: nao da
+
+  "A matriz C continua a ser um ponto fixo"
+- jik :: nao da
+
+  "A matriz C continua a ser um ponto fixo"
+
+- jki :: nao da
+
+  A coluna da matirz C vai variar
+
+- kji :: nao da
+
+  Acaba por ser o mesmo problema que a anterior
+
+- ikj :: Da
+
+  Matriz C -> mexemos ao longo da linha
+  Matriz A -> fixa
+  Matriz B -> mexemos ao longo da linha
+
+- kij ::

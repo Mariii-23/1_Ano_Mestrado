@@ -10,6 +10,8 @@ a) Perfomance estimation
    As instruções vão aumentar.
 
 b) Instructions estimation
+
+
  instrucoes dentro do ciclo for mais "dentro"
  salienta-se que a matrix usada era de 512 x 512
 
@@ -29,6 +31,8 @@ b) Instructions estimation
 
 
 c) Measure
+
+
    calculado sem a flag -fno-omit-frame-pointer
 
    CPI ver (contas do stor)

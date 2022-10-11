@@ -1,0 +1,75 @@
+#+title: Exercisios_capitulo7
+
+* Exercise 7.1
+#+begin_quote
+Exercise 7.1 (Naveda and Seidman 2006, pp. 29–30) The use of a natural language
+(for instance, English or Spanish) and intuitive diagrams is used for documenting
+user requirements. What is the main reason?
+1. To eliminate the communication difficulties among the stakeholders.
+2. To facilitate understanding.
+3. To have no ambiguities.
+4. To be precise.
+#+end_quote
+
+3 -> F. porque a linguaguem natural pode ser muito ambígua.
+
+R: 2
+
+* Exercise 7.2
+#+begin_quote
+Exercise 7.2 (Naveda and Seidman 2006, pp. 27–28) Which of the following sentences does not constitute a valid system requirement?
+1. The product shall be developed using an agile method.
+2. The product shall respond to all requests in less than 5 s.
+3. The product shall be composed of 12 modules.
+4. The product shall use always menu screens to communicate with the users.
+#+end_quote
+
+- 3 :: restringue muito a solução, mas não deixa de ser válido.
+- 4 :: restringe , mas não deixa de ser válido
+
+
+R: 1, Restringue como o produto vai ser feito e não como ele é
+
+* Exercise 7.3
+
+#+begin_quote
+Exercise 7.3 Consider the following requirement:
+#+end_quote
+
+#+begin_center
+The system shall be easy to use for trained persons to use.
+#+end_center
+
+#+begin_quote
+1. What is the type of this requirement?
+2. Is it verifiable? If not, rewrite it so that it is verifiable.
+#+end_quote
+
+- 1 :: Não funcional -> usabilidade
+
+  ~Nota:~ Devemos sempre acrescentar a categoria
+
+- 2 :: Não. Tem ambiguidade: ~easy~, ~trained~. Tinha que ser mais descritivo.
+
+* Exercise 7.5
+
+#+begin_quote
+Exercise 7.5 The following are requirements of a controller of a swimming pool:
+#+end_quote
+
+#+begin_center
+R1: The input valves should be open when the swimming pool is filling.
+R2: The input valves stop when the level of the water reaches 2 m.
+R3: The level of the water should increase gradually.
+R4: The output valves must be open when the water is higher than 2.1 m.
+#+end_center
+
+#+begin_quote
+Which defects this set of requirements present?
+(a) ambiguous, (b) solution-dependent, (c) incomplete, (d) not verifiable.
+#+end_quote
+
+- R1 :: a
+- R2 :: b
+- R3 :: a), c), d)
+- R4 :: c)
