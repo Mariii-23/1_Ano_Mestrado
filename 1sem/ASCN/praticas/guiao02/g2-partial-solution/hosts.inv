@@ -1,8 +1,8 @@
 [db]
-192.168.56.102
+35.184.4.195
 
 [app]
-192.168.56.101
+35.224.189.209
 
 [db:vars]
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
