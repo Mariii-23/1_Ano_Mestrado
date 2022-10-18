@@ -1,0 +1,263 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 197
+#
+# Samples: 2K of event 'cycles:ppp'
+# Event count (approx.): 34805110900
+#
+# Overhead  Command          Shared Object        Symbol                                                                                                                                                                    
+# ........  ...............  ...................  ..........................................................................................................................................................................
+#
+    73.32%  java             jitted-23333-426.so  [.] class MULT_2.mmult(int)
+    13.93%  java             jitted-23333-430.so  [.] class MULT_2.init(int)
+     8.47%  java             [unknown]            [k] 0xffffffffa158cbc0
+     1.23%  VM Thread        libjvm.so            [.] DefNewGeneration::space_iterate
+     0.85%  java             libjvm.so            [.] ObjArrayAllocator::initialize
+     0.40%  java             libjvm.so            [.] TypeArrayKlass::multi_allocate
+     0.32%  java             libjvm.so            [.] MemAllocator::Allocation::notify_allocation_jvmti_sampler
+     0.24%  java             jitted-23333-47.so   [.] Interpreter
+     0.24%  VM Thread        libc-2.17.so         [.] __memset_sse2
+     0.13%  C2 CompilerThre  libjvm.so            [.] PhaseChaitin::build_ifg_physical
+     0.04%  java             jitted-23333-422.so  [.] class java.util.Random.nextDouble()
+     0.04%  java             libc-2.17.so         [.] __memset_sse2
+     0.03%  java             ld-2.17.so           [.] _dl_update_slotinfo
+     0.02%  C1 CompilerThre  libjvm.so            [.] LIR_OpVisitState::append
+     0.02%  java             [unknown]            [k] 0xffffffffa119139a
+     0.02%  C1 CompilerThre  libjvm.so            [.] LIR_Assembler::reg2reg
+     0.01%  VM Thread        libc-2.17.so         [.] __clock_gettime
+     0.01%  java             [unknown]            [k] 0xffffffffa1195377
+     0.01%  C2 CompilerThre  libjvm.so            [.] RegMask::is_bound
+     0.01%  java             [unknown]            [k] 0xffffffffa158c48a
+     0.01%  VM Thread        libc-2.17.so         [.] __memmove_ssse3_back
+     0.01%  C1 CompilerThre  libjvm.so            [.] Interval::split_child_at_op_id
+     0.01%  java             libjvm.so            [.] AccessInternal::PostRuntimeDispatch<CardTableBarrierSet::AccessBarrier<1335398ul, CardTableBarrierSet>, (AccessInternal::BarrierType)1, 1335398ul>::oop_access_barrier
+     0.01%  VM Thread        libjvm.so            [.] DefNewGeneration::IsAliveClosure::do_object_b
+     0.01%  java             libjvm.so            [.] Klass::check_array_allocation_length
+     0.01%  C1 CompilerThre  libjvm.so            [.] GraphBuilder::append_with_bci
+     0.01%  C1 CompilerThre  jitted-23333-1.so    [.] flush_icache_stub
+     0.01%  java             libjvm.so            [.] CompilerConfig::is_interpreter_only
+     0.01%  java             jitted-23333-421.so  [.] class java.util.Random.next(int)
+     0.01%  VM Thread        libjvm.so            [.] ConstantPool::impl_signature_ref_at
+     0.01%  VM Thread        libjvm.so            [.] WeakProcessor::weak_oops_do
+     0.01%  java             libjvm.so            [.] Modules::define_module
+     0.01%  java             ld-2.17.so           [.] _dl_relocate_object
+     0.01%  VM Thread        libjvm.so            [.] DefNewGeneration::FastKeepAliveClosure::do_oop
+     0.01%  java             jitted-23333-380.so  [.] class jdk.internal.misc.Unsafe.compareAndSetLong(class java.lang.Object., long, long, long)
+     0.01%  VM Thread        libjvm.so            [.] Generation::promote
+     0.01%  java             [unknown]            [k] 0xffffffffa1195595
+     0.01%  C1 CompilerThre  [unknown]            [k] 0xffffffffa0ff5cf4
+     0.01%  VM Thread        libjvm.so            [.] strchr@plt
+     0.01%  java             libjvm.so            [.] MemAllocator::allocate
+     0.00%  VM Thread        [unknown]            [k] 0xffffffffa1195377
+     0.00%  VM Thread        libjvm.so            [.] ClassLoaderDataGraph::roots_cld_do
+     0.00%  C1 CompilerThre  libjvm.so            [.] ciObject::get_oop
+     0.00%  Service Thread   libjvm.so            [.] jvmti_GetClassSignature
+     0.00%  Service Thread   libjvm.so            [.] JNIHandleBlock::allocate_handle
+     0.00%  java             jitted-23333-1.so    [.] flush_icache_stub
+     0.00%  java             jitted-23333-428.so  [.] class MULT_2.init(int)
+     0.00%  java             libjvm.so            [.] InstanceKlass::do_local_static_fields
+     0.00%  java             libjvm.so            [.] Unsafe_CompareAndSetLong
+     0.00%  C2 CompilerThre  libjvm.so            [.] Matcher::Label_Root
+     0.00%  java             libjvm.so            [.] SymbolTable::new_symbol
+     0.00%  java             [unknown]            [k] 0xffffffffa158c45a
+     0.00%  VM Thread        libc-2.17.so         [.] vfprintf
+     0.00%  VM Thread        libjvm.so            [.] DefNewGeneration::copy_to_survivor_space
+     0.00%  VM Periodic Tas  libpthread-2.17.so   [.] pthread_mutex_trylock
+     0.00%  java             libjvm.so            [.] InterpreterRuntime::resolve_invoke
+     0.00%  java             libjvm.so            [.] CodeHeap::find_blob_unsafe
+     0.00%  java             [unknown]            [k] 0xffffffffa0f5afe6
+     0.00%  java             [unknown]            [k] 0xffffffffa1197db9
+     0.00%  java             libjvm.so            [.] UNICODE::utf8_length<signed char>
+     0.00%  C1 CompilerThre  [unknown]            [k] 0xffffffffa103c638
+     0.00%  C1 CompilerThre  libjvm.so            [.] LinearScanWalker::free_collect_inactive_fixed
+     0.00%  java             libjvm.so            [.] AllocTracer::send_allocation_outside_tlab
+     0.00%  C1 CompilerThre  libjvm.so            [.] GrowableArrayWithAllocator<Instruction*, GrowableArray<Instruction*> >::grow
+     0.00%  java             [unknown]            [k] 0xffffffffa159608e
+     0.00%  java             [unknown]            [k] 0xffffffffa11912e0
+     0.00%  java             perf-23333.map       [.] 0x00007ff7adca9017
+     0.00%  java             libjvm.so            [.] MemAllocator::Allocation::notify_allocation_jfr_sampler
+     0.00%  VM Thread        libc-2.17.so         [.] _IO_default_xsputn
+     0.00%  java             libjvm.so            [.] ConstantPool::restore_unshareable_info
+     0.00%  java             [unknown]            [k] 0xffffffffa1067cd0
+     0.00%  C1 CompilerThre  libjvm.so            [.] methodHandle::methodHandle
+     0.00%  C1 CompilerThre  libjvm.so            [.] LinearScan::build_intervals
+     0.00%  java             [unknown]            [k] 0xffffffffa0ef77df
+     0.00%  java             libjvm.so            [.] Assembler::vex_prefix
+     0.00%  java             [unknown]            [k] 0xffffffffa0ec9710
+     0.00%  Service Thread   libc-2.17.so         [.] __strlen_sse2_pminub
+     0.00%  java             [unknown]            [k] 0xffffffffa119130d
+     0.00%  Service Thread   libjvm.so            [.] JvmtiEnvBase::is_valid
+     0.00%  Service Thread   libjvm.so            [.] ScopeDesc::decode_object_values
+     0.00%  Service Thread   libperf-jvmti.so     [.] 0x00000000000021c1
+     0.00%  C1 CompilerThre  libjvm.so            [.] GrowableArrayWithAllocator<int, GrowableArray<int> >::grow
+     0.00%  Service Thread   libc-2.17.so         [.] __GI___mempcpy
+     0.00%  Service Thread   libjvm.so            [.] Symbol::as_C_string
+     0.00%  Service Thread   [unknown]            [k] 0xffffffffa158ca5b
+     0.00%  Service Thread   libc-2.17.so         [.] _IO_file_xsputn@@GLIBC_2.2.5
+     0.00%  Service Thread   libjvm.so            [.] jvmti_GetMethodDeclaringClass
+     0.00%  Service Thread   libc-2.17.so         [.] __strcpy_sse2_unaligned
+     0.00%  Service Thread   libjvm.so            [.] jvmti_Deallocate
+     0.00%  Service Thread   libjvm.so            [.] ThreadShadow::clear_pending_exception
+     0.00%  Service Thread   libc-2.17.so         [.] _int_free
+     0.00%  Service Thread   libc-2.17.so         [.] free
+     0.00%  C1 CompilerThre  libjvm.so            [.] ciMethodData::load_data
+     0.00%  C1 CompilerThre  [unknown]            [k] 0xffffffffa1019068
+     0.00%  C1 CompilerThre  libjvm.so            [.] LinearScan::add_use
+     0.00%  Service Thread   libjvm.so            [.] PreserveExceptionMark::~PreserveExceptionMark
+     0.00%  C2 CompilerThre  libjvm.so            [.] PhaseCFG::schedule_late
+     0.00%  C2 CompilerThre  [unknown]            [k] 0xffffffffa0fc5ec0
+     0.00%  java             [unknown]            [k] 0xffffffffa14a77dd
+     0.00%  C2 CompilerThre  libjvm.so            [.] PhaseIdealLoop::build_loop_early
+     0.00%  C2 CompilerThre  libjvm.so            [.] Matcher::xform
+     0.00%  C2 CompilerThre  libjvm.so            [.] PhaseIdealLoop::split_if_with_blocks_post
+     0.00%  C2 CompilerThre  libjvm.so            [.] Type::cmp
+     0.00%  C2 CompilerThre  [unknown]            [k] 0xffffffffa1195377
+     0.00%  java             libjvm.so            [.] InstanceKlass::link_methods
+     0.00%  java             [unknown]            [k] 0xffffffffa0fb2b06
+     0.00%  C2 CompilerThre  libjvm.so            [.] PhaseIdealLoop::is_dominator
+     0.00%  java             [unknown]            [k] 0xffffffffa11a667b
+     0.00%  C2 CompilerThre  libjvm.so            [.] PhaseIdealLoop::sort
+     0.00%  C2 CompilerThre  [unknown]            [k] 0xffffffffa0fc1050
+     0.00%  java             [unknown]            [k] 0xffffffffa0fe0cc9
+     0.00%  java             [unknown]            [k] 0xffffffffa0ff683a
+     0.00%  C1 CompilerThre  libjvm.so            [.] CodeBlob::allocation_size
+     0.00%  C2 CompilerThre  libjvm.so            [.] vmClasses::box_klass_type
+     0.00%  java             libjvm.so            [.] Assembler::emit_operand_helper
+     0.00%  java             libjvm.so            [.] Assembler::fxrstor
+     0.00%  C2 CompilerThre  libjvm.so            [.] PhaseIdealLoop::Dominators
+     0.00%  Service Thread   libc-2.17.so         [.] _int_malloc
+     0.00%  C2 CompilerThre  libjvm.so            [.] Node::set_req_X
+     0.00%  C2 CompilerThre  libjvm.so            [.] PhaseAggressiveCoalesce::insert_copies
+     0.00%  java             [unknown]            [k] 0xffffffffa158c3fa
+     0.00%  java             libjvm.so            [.] java_lang_Class::create_mirror
+     0.00%  java             libjvm.so            [.] TemplateTable::prepare_invoke
+     0.00%  java             [unknown]            [k] 0xffffffffa0ff68b9
+     0.00%  C2 CompilerThre  [unknown]            [k] 0xffffffffa158cbc0
+     0.00%  C2 CompilerThre  libjvm.so            [.] PhaseCFG::sched_call
+     0.00%  java             libjvm.so            [.] LinkResolver::lookup_method_in_klasses
+     0.00%  C2 CompilerThre  libjvm.so            [.] PhaseIdealLoop::do_range_check
+     0.00%  java             libjvm.so            [.] InterpreterRuntime::resolve_ldc
+     0.00%  C2 CompilerThre  libjvm.so            [.] RegionNode::is_CFG
+     0.00%  java             libjvm.so            [.] TemplateInterpreterGenerator::set_short_entry_points
+     0.00%  C2 CompilerThre  [unknown]            [k] 0xffffffffa158bb12
+     0.00%  java             libjvm.so            [.] InterpreterMacroAssembler::dispatch_base
+     0.00%  C1 CompilerThre  [unknown]            [k] 0xffffffffa1596067
+     0.00%  C1 CompilerThre  libjvm.so            [.] ciEnv::register_method
+     0.00%  C2 CompilerThre  libjvm.so            [.] IndexSetIterator::advance_and_next
+     0.00%  C2 CompilerThre  libjvm.so            [.] PhaseIdealLoop::build_loop_late
+     0.00%  java             libjvm.so            [.] Klass::append_to_sibling_list
+     0.00%  C2 CompilerThre  libjvm.so            [.] GrowableArrayWithAllocator<unsigned int, GrowableArray<unsigned int> >::grow
+     0.00%  C1 CompilerThre  libjvm.so            [.] Base::as_Base
+     0.00%  java             [unknown]            [k] 0xffffffffa0ff61be
+     0.00%  C2 CompilerThre  libjvm.so            [.] PhaseCCP::analyze
+     0.00%  java             libjvm.so            [.] InterpreterRuntime::newarray
+     0.00%  C2 CompilerThre  libjvm.so            [.] OopFlow::build_oop_map
+     0.00%  C2 CompilerThre  libjvm.so            [.] PhaseChaitin::stretch_base_pointer_live_ranges
+     0.00%  C2 CompilerThre  libjvm.so            [.] Dict::Insert
+     0.00%  Reference Handl  libjvm.so            [.] methodHandle::~methodHandle
+     0.00%  java             ld-2.17.so           [.] __tls_get_addr_slow
+     0.00%  C2 CompilerThre  libjvm.so            [.] NTarjan::DFS
+     0.00%  C2 CompilerThre  libjvm.so            [.] ScavengableNMethods::register_nmethod
+     0.00%  C2 CompilerThre  ld-2.17.so           [.] __tls_get_addr
+     0.00%  java             libjvm.so            [.] java_lang_String::create_from_unicode
+     0.00%  java             libjvm.so            [.] InstanceKlass::print_class_load_logging
+     0.00%  java             libpthread-2.17.so   [.] pthread_cond_broadcast@@GLIBC_2.3.2
+     0.00%  java             [unknown]            [k] 0xffffffffa0e09a1b
+     0.00%  java             libjvm.so            [.] os::create_thread
+     0.00%  Service Thread   [unknown]            [k] 0xffffffffa0fad930
+     0.00%  C2 CompilerThre  libjvm.so            [.] Type::hashcons
+     0.00%  java             libjvm.so            [.] Klass::restore_unshareable_info
+     0.00%  java             libjvm.so            [.] LoaderConstraintTable::find_loader_constraint
+     0.00%  java             libjvm.so            [.] InstanceKlass::compute_modifier_flags
+     0.00%  C2 CompilerThre  libjvm.so            [.] PhaseIdealLoop::get_ctrl
+     0.00%  Service Thread   libjvm.so            [.] JvmtiDeferredEvent::post
+     0.00%  C2 CompilerThre  libjvm.so            [.] Address::make_raw
+     0.00%  C1 CompilerThre  libjvm.so            [.] ValueType::initialize
+     0.00%  java             libjvm.so            [.] SymbolTable::lookup_shared
+     0.00%  C1 CompilerThre  libjvm.so            [.] MethodData::compute_allocation_size_in_bytes
+     0.00%  C1 CompilerThre  [unknown]            [k] 0xffffffffa13c6aff
+     0.00%  java             libjvm.so            [.] MacroAssembler::andptr
+     0.00%  java             libjvm.so            [.] ConstantPool::resolve_constant_at_impl
+     0.00%  C2 CompilerThre  libjvm.so            [.] PhaseChaitin::clone_projs
+     0.00%  C2 CompilerThre  libjvm.so            [.] PhaseChaitin::Split
+     0.00%  C2 CompilerThre  libjvm.so            [.] PhaseIterGVN::add_users_to_worklist
+     0.00%  C2 CompilerThre  libjvm.so            [.] BufferBlob::create
+     0.00%  C2 CompilerThre  [unknown]            [k] 0xffffffffa158c45a
+     0.00%  C2 CompilerThre  libjvm.so            [.] PhaseCFG::select
+     0.00%  C2 CompilerThre  libjvm.so            [.] InstanceKlass::find_local_field_from_offset
+     0.00%  C2 CompilerThre  libjvm.so            [.] ciKlass::ciKlass
+     0.00%  java             libjvm.so            [.] OopStorage::allocate
+     0.00%  C2 CompilerThre  [unknown]            [k] 0xffffffffa1040a84
+     0.00%  C2 CompilerThre  libjvm.so            [.] RangeCheckNode::is_range_check
+     0.00%  C2 CompilerThre  libjvm.so            [.] Node::grow
+     0.00%  java             libc-2.17.so         [.] __clock_gettime
+     0.00%  java             [unknown]            [k] 0xffffffffa158c4ef
+     0.00%  java             libjvm.so            [.] InstanceKlass::set_package
+     0.00%  java             [unknown]            [k] 0xffffffffa103aa8d
+     0.00%  C2 CompilerThre  libjvm.so            [.] Node::clone
+     0.00%  java             libjvm.so            [.] SystemDictionaryShared::check_linking_constraints
+     0.00%  C2 CompilerThre  [unknown]            [k] 0xffffffffa0ec9733
+     0.00%  java             [unknown]            [k] 0xffffffffa119d8d5
+     0.00%  C1 CompilerThre  libc-2.17.so         [.] _IO_default_xsputn
+     0.00%  java             libjvm.so            [.] metaspace::MetaspaceArena::allocate
+     0.00%  java             [unknown]            [k] 0xffffffffa1042c62
+     0.00%  java             [unknown]            [k] 0xffffffffc0bc3d3f
+     0.00%  C2 CompilerThre  libjvm.so            [.] PhaseChaitin::gather_lrg_masks
+     0.00%  C1 CompilerThre  [unknown]            [k] 0xffffffffa13c6ae2
+     0.00%  C2 CompilerThre  libjvm.so            [.] ciField::ciField
+     0.00%  java             [unknown]            [k] 0xffffffffc05ee000
+     0.00%  C2 CompilerThre  libjvm.so            [.] Matcher::find_shared
+     0.00%  java             [unknown]            [k] 0xffffffffa0ff9cbb
+     0.00%  java             libjvm.so            [.] RegisterSaver::save_live_registers
+     0.00%  C2 CompilerThre  libjvm.so            [.] TypeNarrowOop::isa_same_narrowptr
+     0.00%  java             libjvm.so            [.] AllocateHeap
+     0.00%  java             libc-2.17.so         [.] vfprintf
+     0.00%  java             [unknown]            [k] 0xffffffffa0ec96e5
+     0.00%  java             [unknown]            [k] 0xffffffffa1192396
+     0.00%  java             libc-2.17.so         [.] __GI___munmap
+     0.00%  java             libjvm.so            [.] Metaspace::allocate
+     0.00%  java             [unknown]            [k] 0xffffffffa1590946
+     0.00%  java             libjvm.so            [.] AdapterHandlerLibrary::get_simple_adapter
+     0.00%  java             libjvm.so            [.] InstanceKlass::initialize
+     0.00%  java             libjvm.so            [.] KlassDepChange::initialize
+     0.00%  java             libjvm.so            [.] _GLOBAL__sub_I_g1RootProcessor.cpp
+     0.00%  java             libjvm.so            [.] InstanceKlass::find_local_field
+     0.00%  java             libc-2.17.so         [.] _itoa_word
+     0.00%  java             [unknown]            [k] 0xffffffffa106f610
+     0.00%  java             libpthread-2.17.so   [.] __lll_unlock_wake
+     0.00%  java             [unknown]            [k] 0xffffffffa119420b
+     0.00%  java             [unknown]            [k] 0xffffffffa0fc0edf
+     0.00%  java             [unknown]            [k] 0xffffffffa0fc5b8d
+     0.00%  java             [unknown]            [k] 0xffffffffa1026092
+     0.00%  java             libjvm.so            [.] CompilationPolicy::compile_if_required
+     0.00%  java             [unknown]            [k] 0xffffffffa0fee7aa
+     0.00%  java             [unknown]            [k] 0xffffffffa1595f85
+     0.00%  java             [unknown]            [k] 0xffffffffa0fcd729
+     0.00%  java             [unknown]            [k] 0xffffffffa119d8b7
+     0.00%  java             [unknown]            [k] 0xffffffffa103a94f
+     0.00%  java             libjvm.so            [.] CodeHeap::mark_segmap_as_used
+     0.00%  java             [unknown]            [k] 0xffffffffa0ff0e30
+     0.00%  java             [unknown]            [k] 0xffffffffa0ff1233
+     0.00%  java             [unknown]            [k] 0xffffffffa1595e66
+     0.00%  java             libjvm.so            [.] ObjArrayKlass::array_klass
+     0.00%  java             [unknown]            [k] 0xffffffffa15960b6
+     0.00%  java             [unknown]            [k] 0xffffffffa1026e96
+     0.00%  java             [unknown]            [k] 0xffffffffa0fbd936
+     0.00%  java             [unknown]            [k] 0xffffffffa0ff5c71
+     0.00%  java             [unknown]            [k] 0xffffffffa158c45d
+     0.00%  java             [unknown]            [k] 0xffffffffc0bce07c
+     0.00%  java             libc-2.17.so         [.] _dl_addr
+     0.00%  java             [unknown]            [k] 0xffffffffa158ca5b
+     0.00%  java             [unknown]            [k] 0xffffffffa0fa9e37
+     0.00%  java             [unknown]            [k] 0xffffffffa0ff99ed
+     0.00%  java             [unknown]            [k] 0xffffffffc0bcba24
+     0.00%  perf             [unknown]            [k] 0xffffffffa0fa7098
+     0.00%  perf             [unknown]            [k] 0xffffffffa1005cb4
+     0.00%  perf             [unknown]            [k] 0xffffffffa0e35b20
+     0.00%  perf             [unknown]            [k] 0xffffffffa0e6d5f8
+
+
+#
+# (Tip: Treat branches as callchains: perf report --branch-history)
+#
