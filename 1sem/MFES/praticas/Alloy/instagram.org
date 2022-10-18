@@ -1,0 +1,109 @@
+
+- link :: http://alloy4fun.inesctec.pt/Sb4ZFxbpoLgMo2Nhh
+
+#+begin_src rust
+sig User {
+	follows : set User,
+	sees : set Photo,
+	posts : set Photo,
+	suggested : set User
+}
+
+sig Influencer extends User {}
+
+sig Photo {
+	date : one Day
+}
+
+sig Ad extends Photo {}
+
+sig Day {}
+#+end_src
+
+// Specify the following properties
+// You can check their correctness with the different commands and
+// when specifying each property you can assume all the previous ones to be true
+
+#+begin_src rust
+pred inv1 {
+  // Every image is posted be one user
+  // all x : Photo | some y : User | y->x in posts
+  all x : Photo | one posts.x
+}
+
+#+end_src
+
+
+#+begin_src rust
+pred inv2 {
+	// An user cannot follow itself.
+    all x : User | all y : x.follows | x != y
+    // or
+    all x : User | x not in follows.x
+}
+
+#+end_src
+
+#+begin_src rust
+pred inv3 {
+	// An user only sees (non ad) photos posted by followed users.
+	// Ads can be seen by everyone.
+
+    all x : User | all y : x.sees | y not in Ad => (some f : x.follows | y in f.posts)
+        // or
+    all x : User | all y : x.sees - Ad | (some f : x.follows | y in f.posts)
+
+    // or
+    all x: User | x.sees - Ad in x.follows.posts
+}
+
+#+end_src
+
+
+
+#+begin_src rust
+pred inv4 {
+	// If an user posts an ad then all its posts should be labelled as ads
+    all x : User | ( all p : x.posts | p in Ad) or (all p : x.posts | p not in Ad)
+
+    // or
+    all x : User | (some p: x.posts | p in Ad) => (all z: x.posts | z in Ad)
+}
+
+#+end_src
+
+
+#+begin_src rust
+pred inv5 {
+	// Influencers are followed by everyone else
+    all x : Influencer | all u : User | x in u.follows
+}
+
+#+end_src
+
+#+begin_src rust
+
+
+pred inv6 {
+	// Influencers post every day
+    //TODO: ????
+
+}
+#+end_src
+
+
+#+begin_src rust
+pred inv7 {
+	// Suggested are other users followed by followed users, but not yet followed
+    //TODO: not valid
+    all x : User | all s : x.suggested | s in x.follows.follows and s not in x.follows and x!=y
+}
+#+end_src
+
+
+#+begin_src rust
+pred inv8 {
+	// An user only sees ads from followed or suggested users
+    all x : User | all a : x.sees | a in x.follows.posts or a in x.suggested.posts
+}
+#+end_src
