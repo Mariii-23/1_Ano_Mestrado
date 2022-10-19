@@ -86,7 +86,7 @@ pred inv5 {
 
 pred inv6 {
 	// Influencers post every day
-    //TODO: ????
+    all d : Day | all i : Influencer | some d2 : i.posts.date | d2 = d
 
 }
 #+end_src
