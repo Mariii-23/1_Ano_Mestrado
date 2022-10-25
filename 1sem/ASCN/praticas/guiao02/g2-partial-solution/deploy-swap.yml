@@ -1,6 +1,0 @@
----
-- name: DB install and start
-  hosts: db 
-  become: yes
-  roles:
-    - db

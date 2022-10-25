@@ -96,7 +96,7 @@ pred inv6 {
 pred inv7 {
 	// Suggested are other users followed by followed users, but not yet followed
     //TODO: not valid
-    all x : User | all s : x.suggested | s in x.follows.follows and s not in x.follows and x!=y
+    all x : User | all s : x.suggested | s in x.follows.follows and s not in x.follows
 }
 #+end_src
 

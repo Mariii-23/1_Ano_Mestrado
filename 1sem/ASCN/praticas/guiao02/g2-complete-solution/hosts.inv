@@ -1,0 +1,11 @@
+[db]
+34.171.65.36
+
+[app]
+35.188.209.103
+
+[db:vars]
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+
+[app:vars]
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'

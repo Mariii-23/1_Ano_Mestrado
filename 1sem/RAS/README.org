@@ -84,3 +84,23 @@ What not to have/avoid?
 - speculations
 - suggestions
 - projects plans
+* Requirements elicitation
+
+#+begin_src bash
+study domain -> identify sources -> consult stakeholders -> select techniques -> elicit requirements
+#+end_src
+
+** individual
+- interview
+- surveys
+- introspection
+** artifact
+- domain analysis
+- object orientation
+- prototyping
+- scenario
+- personas
+- goal modeling
+** group of people
+- group dynamics
+- cooperative work
