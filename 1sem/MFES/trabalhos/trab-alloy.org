@@ -1,0 +1,57 @@
+#+title: Trab Alloy
+http://alloy4fun.inesctec.pt/xGGhEZ9DCNng25hDn
+#+begin_src python
+sig Node {
+	children : set Node
+}
+sig Leaf extends Node {}
+one sig Root in Node {}
+
+sig Red, Black in Node {}
+
+pred Invs {
+    // Um nodo não pode ser filho dele mesmo
+    all x: Node | x not in x.children
+
+  	// A root não pode ter pais
+    all x: Root | no y: Node | x in y.children
+
+  	// Todos os nodos tem que ter um pai, com exceção da root
+    all x: Node - Root | one y : Node | x in y.children
+
+    // Todos os nodos ou são verdes ou  são pretos
+    all x: Node | ( x in Red => x not in Black ) or (x in Black => x not in Red)
+    all x: Node | x in Red or x in Black
+
+    // A root tem que ser preta
+    all x: Node | x in Root => x in Black
+
+    // Um nodo não se pode conter a ele próprio
+    all x: Node | x not in x.^(children)
+
+    // Todos os leafs não podem ter filhos
+    all x: Leaf | no y: x.children| y in Node
+
+    // Se os Filhos de A são pretos então os filhos dos filhos de A têm que ser vermelhos
+    all x: Node - Leaf - Root| all y: x.children | y not in Leaf => (y in Red => x in Black) and (y in Black => x in Red)
+
+    // A arvore tem q ser binária
+    all x: Node - Leaf | #(x.children) = 2
+
+    // Todos os caminhos de um Node para as suas folhas têm que conter o mesmo
+    // número de Nodes pretos
+    all x : Leaf | all y: Leaf | #(^children.x & Black) = #(^children.y & Black)
+
+    // Todos os leafs sao pretos
+    all x: Leaf | x in Black
+
+    // Todos os nodos têm que ter pelo menos um filho, excepto a Root e os Leafs
+    all x : Node - Root - Leaf | some x.children
+}
+#+end_src
+* Todo [5/5]
+- [X] check1
+- [X] check2
+- [X] check3
+- [X] check4
+- [X] check5
