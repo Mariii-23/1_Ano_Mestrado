@@ -1,0 +1,80 @@
+#+title: 2trabalhoig Password {}
+
+http://alloy4fun.inesctec.pt/7oFfbLnYJ8mJCCSjM
+
+http://alloy4fun.inesctec.pt/s2uwDkK8zZXxgss4d
+
+
+sig Password {}
+sig User {
+	var password : set Password
+}
+var sig LoggedIn in User {}
+
+pred behavior {
+  // Estado inicial
+  no LoggedIn
+  no User.password
+
+  always all u: User | one u.password or no u.password
+
+  always {
+  	stutter
+    or
+      (some u: User | some p : Password | login[u,p]  or createUser[u,p] or changePassword[u,p])
+    or
+      (some u: User | logout[u] or deleteUser[u])
+  }
+}
+
+pred stutter {
+  LoggedIn' = LoggedIn
+  User' = User
+  password' = password
+}
+
+pred login [u: User, p: Password] {
+    u not in LoggedIn
+   // some u.password
+  u.password' = p
+
+    User' = User
+    password' = password
+  	LoggedIn' = LoggedIn + u
+}
+
+pred logout [u: User] {
+	u in LoggedIn
+
+    password' = password
+  	LoggedIn' = LoggedIn - u
+    User' = User
+}
+
+pred createUser [u: User, p: Password] {
+  u not in LoggedIn
+  historically u not in LoggedIn
+
+  User' = User
+  password' = password + u->p
+  LoggedIn' = LoggedIn + u
+}
+
+
+pred deleteUser [u: User] {
+  u in LoggedIn
+
+  User' = User
+  password' = password - u->Password
+  LoggedIn' = LoggedIn - u
+}
+
+pred changePassword [u: User, p: Password] {
+  u in LoggedIn
+
+  historically p not in u.password
+
+  User' = User
+  password' = password - u->Password + u->p
+  LoggedIn' = LoggedIn
+}

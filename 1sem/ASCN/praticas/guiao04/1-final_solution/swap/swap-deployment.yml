@@ -1,0 +1,34 @@
+---
+# Deployment for deploying Swap
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: swap
+  labels:
+    app: swap
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: swap
+  template:
+    metadata:
+      labels:
+        app: swap
+    spec:
+      containers:
+      - name: swap
+        image: ascnuminho/swap
+        env:
+        - name: DB_HOST
+          value: mysql-service
+        - name: DB_DATABASE
+          value: swap
+        - name: DB_USERNAME
+          value: swapuser
+        - name: DB_PASSWORD
+          value: "123456" # Use secret object in real usage
+        - name: MIGRATE
+          value: "true"
+        ports:
+        - containerPort: 8000
