@@ -1,0 +1,65 @@
+#+title: Ascn 20220112
+
+* 1 A complexidade da replicação de um serviço multi-camada não varia de acordo com o componente alvo (p.ex., servidor web, servidor aplicacional, base de dados) a replicar. Indique e justifique se concorda ou não com esta afirmação.
+
+Um servidor multi-camada, significa que cada um dos servidores presentes vai agir como um cliente do proximo tier. Com isto, conseguimos permitir o desenvolvimento independente e um dimensionamento de diferenças funcionalidades.
+Ou seja, cada uma das camadas vai atuar de forma diferente, numas podemos precisamos de guardar informação de estado e noutras não. Para ser possível replicar estas camadas, as várias réplicas precisam de ter a mesma informação para podermos garantir que em caso de um dos nodos falhar, os outros podem compensar sem que se perca nenhuma informação.
+Com isto, não concordo com a afirmação pois a complexidade de replicação de um serviço multi-camada vai variar de acordo com o comportamento alvo a ser replicado.
+
+Por exemplo:
+É mais fácil replicar *upper tiers*, por exeplo web browser, que não apresentam estado, do que *lower tiers*, por exemplo databases, que apresentam um estado persistente que é preciso ser mantido por todas as réplicas existentes.
+Já o *middle tiers* (application server) apresenta um estado transent e cached.
+
+* 2 As infraestruturas de computação em nuvem promovem uma utilização eficiente de recursos computacionais, de rede e armazenamento através da utilização de virtualização. Descreva, e justifique, duas vantagens e duas desvantagens da utilização desta tecnologia.
+
+vantagens:
+ - Através da virtualização do armazenamento, é possível que diversos utilizadores possam usar o mesmo recurso físico de forma independente, não havendo nenhuma interferência entre eles. Desta forma, otimizamos a utilização desse recurso, não estando subaproveitado.
+
+ - Uma das grandes vantagens é a transparência no acesso. Um qualquer utlizador que usufruia do sistema irá ter a sensação que se encontra no próprio computador, podendo este encontrar-se num outro qualquer sítio.
+
+ - Isolamento, temos a garantia que todos os recursos da virtuais encontram-se isolados, um dos outros tanto em termos de segurança, performance e de falha.
+
+ - facil gestão - é mais simples gerir um recurso virtual do que um real. (mais facikl migrar ou ate fazer backups)
+
+
+desvantagens:
+ - Uma das maiores desvantagens é a perda de performance, visto que temos uma penalização, pois todas as operações têm qque ser feitas em duas camadas (VM + Hypervisior). Neste caso a performance é pior para operações de IO e ao nível de cpu
+
+ - Overprovisioning :: podemos dar deploying de mais recursos virtuais do que os físicos que temos disponíveis levando a uma degradação de performance
+
+ - Outra grande desvantagem é no caso do recurso físico falhar, vários utilizadores perderão o acesso aos recursos virtuais, havendo uma grande dependência
+
+ - segurança :: se o isolamento nao for bem feito, a seguranca de todos os recursos virtuais fica comprometida
+
+* 3 Nas aulas práticas recorreu às ferramentas ElasticSearch, Kibana e MetricBeat para observar a utilização de recursos de diferentes máquinas virtuais. Indique qual a função de cada uma destas ferramentas num ambiente de monitorização.
+
+- metric beat :: envia sinais com métricas, tratando da observação.
+  (é utilizada para coletar dados de métricas do sistema e aplicativos, como uso de CPU, memoria, disco  e rede, e enviá-los para o elastic search para armazenamento e análise)
+
+- elastic search ::  é a parte central, juntando as várias componentes de monitorização.
+
+  (é uma ferramenta de busca e análise de dados. É amplamente utilizada para indexar, pesquisar e analisar grandes quantidades de dados de forma rápida)
+
+- kibana :: apresenta os resultados, com gráficos, é mais a parte visual
+  (permite criar gŕaficos a partir dos dados armazenados atraves do Elastic)
+
+
+Em um ambiente de monitorização, estas 3 ferramentas são usadas para coletar, armazenar e visualizar dados de utilização de recursos de máquinas virtuais. Isto permite aos administradores monitorar o uso de recursos e tomar decisões informadas sobre o dimensionamento e otimização das máquinas virtuais.
+
+
+* 4 Imagine que a Universidade do Minho lhe atribui a responsabilidade de instalar a aplicação WikiJS para servir todos os alunos da universidade. No entanto, antes do processo de instalação, o gestor financeiro da universidade pergunta-lhe quais os recursos computacionais que prevê serem necessários para esta instalação. Que estratégia(s) pode aplicar para responder a esta pergunta e ter um elevado grau de confiança que a aplicação será capaz de responder à carga computacional imposta em produção?
+
+A aplicação a ser desenvolvida precisa de ser implementada para usar apenas os recusros necessários ao longo do tempo. Para isso, seria necessário ter ferramentas que altererassem dinamicamente os recursos físicos utilizados. Assim quando houvesse um pico de pedidos, a aplicação não teria falhas, e no caso de a aplicação encontrar-se apenas nos 75% do máximo de pedidos, deveria comecçar a usar mais cpu e ram. Por outro lado, quando tivesse a ser usado por poucos utilizadores, deveria passar para o mínimo de recursos possíveis.
+
+Tendo em conta o tipo de aplicação pedida, a arquitetura a usar poderia ser cliente servidor, com um proxy-server, visto que a quantidade de clientes é conhecida, sendo igual ao número de alunos. Em princípio, não será preciso escalar muito, visto que a sua dimensão deve ser aproximadamente constante, tirando em alturas de pico.
+
+Desta forma, conseguimos que a aplicação satisfaça sempre os pedido e tenha em consideração o custo que a universidade fosse a pagar.
+
+---
+
+Outra estrategia é realizarmos testes de carga na aplicação antes de a colocarmos em producao. Durante esses testes, a aplicacao é submetida a uma carga simulada de tráfego e uso de recursos, a fim de avaliar o seu desempenho e establecer os requisitos de recursos necessários para suportar a carga de producao espearada.
+
+Para realizarmos estes testes de forma eficiente e confiável, é importante estabelecer algumas boas práticas:
+ - definir objetivos claros para os testes de carga, como verificar se a aplicação é capaz de suportar a carga de tráfego esperada ou identificar picos de desempenho.
+ - monitorizar o desempenho da aplicacao durante os testes de carga para determinar os requisitos computacionais necessários para suportar a carga de produção esperada.
+Realizando estes testes de forma sistemática e bem planejada, é possível garantir um elevado grau de confianca de que a aplicacao sera capaz de responder a carga computacional imposta em producao.
