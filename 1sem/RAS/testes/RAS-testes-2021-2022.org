@@ -1,0 +1,131 @@
+#+title: Ras Testes 2021 2022
+
+* 1. Os requisitos dum sistema de engenharia
+V
+V
+F
+F
+F
+
+* 2. Um requisito funcional
+V
+F -> Não são incluidos na documentação
+F -> encontram-se na documentação
+V
+?
+
+* 3. Os requisitos Nao funcionais dum sistema
+V
+F
+V
+V
+F (padronizacao?)
+
+* 4. Os requisitos nao funcionais da categoria
+F (performance)
+F (manutencao nao)
+V
+V
+V
+
+* 5. A engenharia de requisitos
+F
+F (não é restrito)
+V
+V
+V
+
+* 6. O levantamento de requisitos
+V
+F ?
+V
+V
+F ?
+
+* 7. A escrita de requisitos em português
+F (deve ser restrito)
+V ?
+F
+V
+F
+
+* 8. Um modelo de domínio ???
+V ? (vocabulario?)
+V
+V
+V
+V
+
+* 9. A arquitetura dum sistema de software
+V
+?
+F
+V
+V
+
+* 10. Numa abordagem orientada ao risco,
+V
+F
+F
+F ?
+V (como é orientada ao risco, se o risco for muito baixo não ha necessidade)
+
+* 11. Um padrão de conceção (design pattern)
+V ??
+F
+F
+F
+V ???
+
+* 12. O padrão observer ??
+V
+..
+F, push :: observadores para observador
+??
+V?
+
+
+* 13. Um padrao arquitetural
+F
+V
+V
+V
+V ?
+
+* 14
+- R1 :: Um dos pais deve submeter, atráves duma aplicação que se instala no telemóvel e cuja interfase gráfica se adapta a esse telemóvel, o seu pedido de subsídio.
+
+  + Como um dos pais quero submeter o meu pedido de subsídio.
+  + Como um dos pais quero que o processo de submissao de pedidos seja feito através de um aplicativo mobile que se possa instalar no telemóvel
+  + Como um dos pais quero que esse aplicativo tenha uma interfase gráfica que se adapte ao telemóvel em questão.
+
+  + Justificacao ::  Observando o requisito conseguimos perceber que estamos a misturar requisito funcional com nao funcional, separando-o conseguimos manter uma melhor organização. Com isto, conseguimo-lo separar em 1 req funcional e 2nao funcionais.
+
+- R2 :: O sistema, por regra, atribui, a cada pedido de subsídio submetido, um fiscal, que é escolhido em função da freguesia de residência do agregado familiar.
+
+  + Cada pedido de subsídio submetido tem de ter um fiscal atribuído
+
+  + Como fiscal, quero que o sistema me atribuia os pedidos de subsídio submetidos em função da freguesia de residencia do agregado familiar
+
+  + justificacao :: Com esta separação conseguimos separar duas funcionalidades diferentes e distintas. Conseguindo com isto que estes requisitos passem a ser mais simples e claros.
+
+- R3 :: O número de pedidos que cada fiscal tem ainda por processar, é-lhe enviado, diariamente, atráves dum email
+
+  + Como fiscal quero que me seja enviado diariamente um email, com o número de pedidso que ainda tenho por processar
+
+  + justificação :: Esta pequena alteração tornou o requisito mais simples e claro.
+
+- R4 :: O sistema deve permitir a edição de avaliações sobre cada pedido, que são da responsabilidade do respetivo fical. O responsável camarário pelo processo de subsídios introduz no sistema a decisão final (aceite/rejeitado/dados insuficientes/fora de âmbito) sobre cada pedido de subsídio com base nas avaliações.
+
+  + Como fical, quero poder editar as avaliações sobre cada pedido que seja responsável.
+
+  + Como responsável camarário pelo processo de subsídios, quero introduzis no sistema a decisão final sobre cada pedido de subsídio com base nas avaliações.
+
+  + A decisão final sobre cada pedido de subsídio só pode ser aceite, rejeitado , dados insuficientes ou fora de âmbito.
+
+  + justificação :: O requisito dado continha muita informação e diferentes funcionalidades. Como tal, decidi separa-las. Para isso criou -se um requisito para o fiscal, um para o camarario e um para a decisao final.
+
+* 15
+[[./question15.jpg]]
+
+* 16

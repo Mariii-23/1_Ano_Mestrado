@@ -1,5 +1,6 @@
 
-- link :: http://alloy4fun.inesctec.pt/Sb4ZFxbpoLgMo2Nhh
+- link :: http://alloy4fun.inesctec.pt/sLyJqxYckjfXg9MCq
+  http://alloy4fun.inesctec.pt/Sb4ZFxbpoLgMo2Nhh
 
 #+begin_src rust
 sig User {
@@ -76,7 +77,7 @@ pred inv4 {
 #+begin_src rust
 pred inv5 {
 	// Influencers are followed by everyone else
-    all x : Influencer | all u : User | x in u.follows
+    all x : Influencer | all u : User - i | x in u.follows
 }
 
 #+end_src
@@ -104,6 +105,6 @@ pred inv7 {
 #+begin_src rust
 pred inv8 {
 	// An user only sees ads from followed or suggested users
-    all x : User | all a : x.sees | a in x.follows.posts or a in x.suggested.posts
+    all x : User | all a : x.sees | a in Ad => a in x.follows.posts or a in x.suggested.posts
 }
 #+end_src

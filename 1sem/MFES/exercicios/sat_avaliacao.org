@@ -1,0 +1,72 @@
+#+title: Sat Avaliacao
+https://colab.research.google.com/drive/1uP24_NW30ixe189a2oub4y1XIrtXIBb3?usp=sharing#scrollTo=5R-ktCby--ci
+
+#+begin_src bash
+2 CPU
+2 RAM
+2 MotherBoards
+3 Placas grágicas
+3 Monitor
+
+Obrigatório ter uma única motherboard
+único CPU
+único placa grafica
+único Ram
+
+#+end_src
+
+* Questao 1
+1. Definicao das variaveis proporcionais
+
+   - MotherBoards:
+     + MB1 -> O pc tem a motherboard MB1
+     + MB2 -> O pc tem a motherboard MB2
+
+   - RAM
+     + RAM1 -> O pc tem a ram RAM1
+     + RAM2 -> O pc tem a ram RAM2
+
+   - CPUs:
+     + CPU1 -> O pc tem o cpu CPU1
+     + CPU2 -> O pc tem o cpu CPU2
+
+   - Placas gráficas:
+     + PG1 -> O pc tem a placa grafica PG1
+     + PG2 -> O pc tem a placa grafica PG2
+     + PG3 -> O pc tem a placa grafica PG3
+
+   - Monitores
+     + MON1 -> O pc tem o monitor MON1
+     + MON2 -> O pc tem o monitor MON2
+     + MON3 -> O pc tem o monitor MON3
+
+2. Formulas CNF
+
+   - única motherboard
+     #+begin_src latex
+     ¬(MB1 ⋀ MB2) ⋀ ( MB1 ⋁ MB2) ≡
+     ≡ (¬MB1 ⋁ ¬MB2) ⋀ (MB1 ⋁ MB2)
+     #+end_src
+
+
+   - único CPU
+      #+begin_src latex
+      (¬CPU1 ⋁ ¬CPU2) ⋀ (CPU1 ⋁ CPU2)
+      #+end_src
+   - único placa grafica
+
+      #+begin_src latex
+     (PG1 ⋁ PG2 ⋁ PG3 ) ⋀ ¬( PG1 ⋀ PG2 ) ⋀ ¬( PG1 ⋀ PG3 ) ⋀ ¬( PG2 ⋀ PG3 ) ≡
+
+≡ (PG1 ⋁ PG2 ⋁ PG3 ) ⋀ ( ¬PG1 ⋁ ¬PG2 ) ⋀ ( ¬PG1 ⋁ ¬PG3 ) ⋀ ( ¬PG2 ⋁ ¬PG3 )
+      #+end_src
+   - único Ram
+
+      #+begin_src latex
+      (¬RAM1 ⋁ ¬RAM2) ⋀ (RAM1 ⋁ RAM2)
+      #+end_src
+
+
+     #+begin_src latex
+
+     #+end_src
