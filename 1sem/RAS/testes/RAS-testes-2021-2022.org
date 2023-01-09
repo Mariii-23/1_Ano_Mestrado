@@ -1,98 +1,97 @@
 #+title: Ras Testes 2021 2022
+* Teste 2022.01.07
+** 1. Os requisitos dum sistema de engenharia
++ V
++ V
++ F
++ F
++ F
 
-* 1. Os requisitos dum sistema de engenharia
-V
-V
-F
-F
-F
+** 2. Um requisito funcional
++ V
++ F -> Não são incluidos na documentação
++ F -> encontram-se na documentação
++ V
++ V
 
-* 2. Um requisito funcional
-V
-F -> Não são incluidos na documentação
-F -> encontram-se na documentação
-V
-?
+** 3. Os requisitos Nao funcionais dum sistema
++ V
++ F
++ V
++ V
++ F (padronizacao?)
 
-* 3. Os requisitos Nao funcionais dum sistema
-V
-F
-V
-V
-F (padronizacao?)
+** 4. Os requisitos nao funcionais da categoria
++ F (performance)
++ F (manutencao nao)
++ V
++ V
++ V
 
-* 4. Os requisitos nao funcionais da categoria
-F (performance)
-F (manutencao nao)
-V
-V
-V
+** 5. A engenharia de requisitos
++ F
++ F (não é restrito)
++ V
++ V
++ V
 
-* 5. A engenharia de requisitos
-F
-F (não é restrito)
-V
-V
-V
+** 6. O levantamento de requisitos
++ V
++ F ?
++ V
++ V
++ F
 
-* 6. O levantamento de requisitos
-V
-F ?
-V
-V
-F ?
+** 7. A escrita de requisitos em português
++ F (deve ser restrito)
++ F (procesamento automatico) ???
++ F
++ V
++ F
 
-* 7. A escrita de requisitos em português
-F (deve ser restrito)
-V ?
-F
-V
-F
+** 8. Um modelo de domínio
++ V
++ F
++ V ?
++ F
++ V
 
-* 8. Um modelo de domínio ???
-V ? (vocabulario?)
-V
-V
-V
-V
+** 9. A arquitetura dum sistema de software
++ V
++ V
++ F
++ V
++ F
 
-* 9. A arquitetura dum sistema de software
-V
-?
-F
-V
-V
+** 10. Numa abordagem orientada ao risco,
++ V
++ F
++ F
++ F (*)
++ F (como é orientada ao risco, se o risco for muito baixo não ha necessidade)
 
-* 10. Numa abordagem orientada ao risco,
-V
-F
-F
-F ?
-V (como é orientada ao risco, se o risco for muito baixo não ha necessidade)
+** 11. Um padrão de conceção (design pattern)
++ V ??
++ F
++ F
++ F
++ F ???
 
-* 11. Um padrão de conceção (design pattern)
-V ??
-F
-F
-F
-V ???
+** 12. O padrão observer ??
++ V
++ ..
++ F, push :: observadores para observador
++ F
++ V?
 
-* 12. O padrão observer ??
-V
-..
-F, push :: observadores para observador
-??
-V?
+** 13. Um padrao arquitetural
++ F
++ V
++ V
++ V
++ V ?
 
-
-* 13. Um padrao arquitetural
-F
-V
-V
-V
-V ?
-
-* 14
+** 14
 - R1 :: Um dos pais deve submeter, atráves duma aplicação que se instala no telemóvel e cuja interfase gráfica se adapta a esse telemóvel, o seu pedido de subsídio.
 
   + Como um dos pais quero submeter o meu pedido de subsídio.
@@ -125,7 +124,100 @@ V ?
 
   + justificação :: O requisito dado continha muita informação e diferentes funcionalidades. Como tal, decidi separa-las. Para isso criou -se um requisito para o fiscal, um para o camarario e um para a decisao final.
 
-* 15
+** 15
 [[./question15.jpg]]
 
-* 16
+** 16
+Salve se quem puder
+
+* Teste 2022.01.28
+
+** 1. Os requisitos dum sistema de engenharia
++ V
++ V
++ F
++ F
++ V ?
+
+** 2. Um requisito funcional
++ V
++ F
++ F
++ V
++ V
+** 3. Os requisitos não funcionais dum sistema
++ V
++ F
++ F
++ F
++ F
+
+** 4. Os requisitos não funcionais da categoria
++ F ()
++ V
++ V
++ F (refere-se a funcionar de forma correta no ambiente em que se enocontra inserido)
++ V
+
+** 5. A engenharia de requisitos
++ ?
++ V
++ V
++ V
++ V
+
+** 6. O levantamento de requisitos (Duvidoso ?)
++ V
++ V
++ V
++ V
++ V
+
+** 7. As entrevistas
++ V
++ F
++ F
++ V
++ V
+
+** 8. Um modelo de domínio
++ V
++ F
++ F
++ ?
++ V
+
+** 9. A arquitetura dum sistema de software
++ V
++ V
++ V
++ ?
++ V
+
+** 10. Numa abordagem orientada ao risco
++ V
++ F (deve ser sempre igual)
++ F (*)
++ ?
++ ??
+
+** 11. Um padrão de conceção (desig pattern)
++ F (nós conhecemos é a solucao)
++ V
++ V
++ V
++ V
+
+** 12. O padrão Observer ??
++ F
++ F ?
++ F
++ ?
++ ?
+
+** 13. Um padrão arquitetural
++ V
++ ?
++ ?
++ F
++ V

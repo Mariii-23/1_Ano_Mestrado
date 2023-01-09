@@ -1,0 +1,25 @@
+#+title: Ficha1
+
+* 1. Cliente servidor ou peer to peer
+** Cliente servidor
+- server
+  + tem um ip constante
+- clientes
+  + comunicam apenas com o server
+  + podem-se conectar intermitentemente
+  + podem ter ips dinamicos
+  + nao comunicam entre eles
+
+
+- desvantagem :: se quisermos enviar um mesmo pacote para todos os clientes vamos desperdicar muito tempo (upload rate muito alto)
+
+** P2P
+
++ não existe nenhum servidor sempre ativo
++ os sistemas comunicam diretametne
++ peers pedem outros request peers em troca de providenciar outros peers
+
+  (self scalability)
++ os peers estao intermitentemente conectados e podem mudar de IP (gerenciamento complexo)
+
++ exemplo de uso :: BitTorren
