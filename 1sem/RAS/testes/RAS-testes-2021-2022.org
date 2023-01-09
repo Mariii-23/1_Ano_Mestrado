@@ -12,7 +12,7 @@
 + F -> Não são incluidos na documentação
 + F -> encontram-se na documentação
 + V
-+ V
++ F
 
 ** 3. Os requisitos Nao funcionais dum sistema
 + V
@@ -32,14 +32,14 @@
 + F
 + F (não é restrito)
 + V
-+ V
++ F (está focada no problema)
 + V
 
 ** 6. O levantamento de requisitos
 + V
-+ F ?
++ F
 + V
-+ V
++ F
 + F
 
 ** 7. A escrita de requisitos em português
@@ -51,8 +51,8 @@
 
 ** 8. Um modelo de domínio
 + V
-+ F
-+ V ?
++ V
++ V
 + F
 + V
 
@@ -61,7 +61,7 @@
 + V
 + F
 + V
-+ F
++ V
 
 ** 10. Numa abordagem orientada ao risco,
 + V
@@ -71,25 +71,25 @@
 + F (como é orientada ao risco, se o risco for muito baixo não ha necessidade)
 
 ** 11. Um padrão de conceção (design pattern)
-+ V ??
++ V
 + F
 + F
 + F
-+ F ???
++ V
 
 ** 12. O padrão observer ??
 + V
 + ..
 + F, push :: observadores para observador
 + F
-+ V?
++ V
 
 ** 13. Um padrao arquitetural
 + F
 + V
 + V
 + V
-+ V ?
++ V
 
 ** 14
 - R1 :: Um dos pais deve submeter, atráves duma aplicação que se instala no telemóvel e cuja interfase gráfica se adapta a esse telemóvel, o seu pedido de subsídio.
@@ -153,20 +153,20 @@ Salve se quem puder
 + F
 
 ** 4. Os requisitos não funcionais da categoria
-+ F ()
++ F
 + V
-+ V
++ F (confidencialidade e integridade)
 + F (refere-se a funcionar de forma correta no ambiente em que se enocontra inserido)
 + V
 
 ** 5. A engenharia de requisitos
-+ ?
 + V
++ V ?
 + V
 + V
 + V
 
-** 6. O levantamento de requisitos (Duvidoso ?)
+** 6. O levantamento de requisitos
 + V
 + V
 + V
@@ -184,22 +184,22 @@ Salve se quem puder
 + V
 + F
 + F
-+ ?
++ V
 + V
 
 ** 9. A arquitetura dum sistema de software
 + V
 + V
 + V
-+ ?
++ V
 + V
 
 ** 10. Numa abordagem orientada ao risco
 + V
 + F (deve ser sempre igual)
 + F (*)
-+ ?
-+ ??
++ F
++ V ?
 
 ** 11. Um padrão de conceção (desig pattern)
 + F (nós conhecemos é a solucao)
@@ -217,8 +217,8 @@ Salve se quem puder
 
 ** 13. Um padrão arquitetural
 + V
-+ ?
-+ ?
++ F
++ F
 + F
 + V
 
@@ -227,13 +227,13 @@ Salve se quem puder
 
 - Um artigo tem que incluir: título, resumo, nomes dos autores, respetivas afiliações. (req. utilizador)
 
-- Um co-autores deve conseguir submeter dados relativos a um artigo. (req. utilizador)
+- Um co-autores deve conseguir submeter dados relativos a um artigo através dum formulário. (req. utilizador)
 
 - O formulário a ser preenchido, deve ser desenvolvido em HTML/CSS (req sistema) nao funcional
 
 *** F2 A submissão deve incluir um ficheiro PDF, com um limite máximo de 35MB, que contém o artigo científico, escrito segunda as regras da revista
 
-- O ficheiro que contêm o artigo científico tem um limite máximo de 35MB. (req. de sistema)
+- O ficheiro PDF que contêm o artigo científico tem um limite máximo de 35MB. (req. de sistema)
 
 - Os artigos submetidos devem cumprir as regras da revista. (req. utilizador)
 
@@ -246,14 +246,15 @@ Salve se quem puder
 - O editor decide se cada artigo identificado com plágio está (ou não) apto a ser revisto (req utilizador)
 
 *** F4 O sistema deve ser fácil de usar, ter capacidade para ser acedido por 50 utilizadores ao mesmo tempo e disponibilizar um serviço de chat para esclarecimento de problemas técnicos e de dificuldades de utilização.
-São todos requisitos nao funcionais
 
-- O sistema deve poder ser utilizado por um utilizador sem experiência, em menos de 15 mins. (req. sistema)
+- O sistema deve poder ser utilizado por um utilizador sem experiência, em menos de 15 mins. (req. sistema) nao funcional
 
-- O sistema tem que ter capacidada para ser acedido por 50 utilizadores ao mesmo tempo (req sistema)
+- O sistema tem que ter capacidada para ser acedido por 50 utilizadores ao mesmo tempo (req sistema) nao funcional
 
 - O sistema deve disponibilizar um serviço de chat para esclarecimento de problemas técnicos e de dificuldades de utilização. (req sistema)
+
 ** 15
 [[./question15_2.jpg]]
+
 ** 16
-Salve-se quem puder
+[[./question16_2.jpg]]
