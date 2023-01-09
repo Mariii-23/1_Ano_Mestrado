@@ -221,3 +221,39 @@ Salve se quem puder
 + ?
 + F
 + V
+
+** 14. ai
+*** F1 Um dos co-autores preenche, através dum formulário desenvolvido em HTML/CSS, os dados relativos ao artigo (título, resumo, nomes dos autores, respetivas afiliações, etc) que pretende submeter.
+
+- Um artigo tem que incluir: título, resumo, nomes dos autores, respetivas afiliações. (req. utilizador)
+
+- Um co-autores deve conseguir submeter dados relativos a um artigo. (req. utilizador)
+
+- O formulário a ser preenchido, deve ser desenvolvido em HTML/CSS (req sistema) nao funcional
+
+*** F2 A submissão deve incluir um ficheiro PDF, com um limite máximo de 35MB, que contém o artigo científico, escrito segunda as regras da revista
+
+- O ficheiro que contêm o artigo científico tem um limite máximo de 35MB. (req. de sistema)
+
+- Os artigos submetidos devem cumprir as regras da revista. (req. utilizador)
+
+*** F3 O sistema deve alertar, através dum SMS, o editor para casos de artigos submetidos que tenham uma grande dose de sobreposição (plágio) nos conteúdos com artigos armazenados nos repositórios que foram previamente selecionados. O editor decide se cada artigo identificado com plágio está (ou não) apto a ser revisto.
+
+- O editor recebe um sms quando um artigo é assinalado com uma grande dose de sobrepoição (plágio) (req nao funcional)
+
+- O sistema deve ser capaz de analisar um artigo submetido com artigos armazenados nos repositórios, previamente selecionas, de modo a verificar se existe uma grande dose de sobreposicção (plágio)  (req. sistema)
+
+- O editor decide se cada artigo identificado com plágio está (ou não) apto a ser revisto (req utilizador)
+
+*** F4 O sistema deve ser fácil de usar, ter capacidade para ser acedido por 50 utilizadores ao mesmo tempo e disponibilizar um serviço de chat para esclarecimento de problemas técnicos e de dificuldades de utilização.
+São todos requisitos nao funcionais
+
+- O sistema deve poder ser utilizado por um utilizador sem experiência, em menos de 15 mins. (req. sistema)
+
+- O sistema tem que ter capacidada para ser acedido por 50 utilizadores ao mesmo tempo (req sistema)
+
+- O sistema deve disponibilizar um serviço de chat para esclarecimento de problemas técnicos e de dificuldades de utilização. (req sistema)
+** 15
+[[./question15_2.jpg]]
+** 16
+Salve-se quem puder
