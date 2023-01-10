@@ -13,13 +13,12 @@ pred add [t : Task] {
   t not in Pending
   t not in Done
   Pending' = Pending + t
-  Done = Done'
+  Done' = Done
 }
 
 pred complete [t : Task] {
 	// Complete a pending task
-  t in Pending
-  t not in Done
+  t in Pending + Done
 
   Done' = Done + t
   Pending' = Pending - t
@@ -27,9 +26,10 @@ pred complete [t : Task] {
 
 pred delete [t : Task] {
 	// Delete a task
-  (t in Pending and t not in Done) => Pending' = Pending - t and Done' = Done
-  (t in Done and t not in Pending) => Done' = Done - t and Pending' = Pending
 
+  t in Pending + Done
+  Pending'= Pending-t
+  Done'= Done-t
 }
 
 pred stutter {

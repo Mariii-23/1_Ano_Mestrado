@@ -9,7 +9,7 @@
 
 ** 2. Um requisito funcional
 + V
-+ F -> Não são incluidos na documentação
++ F -> a def nao esta certa
 + F -> encontram-se na documentação
 + V
 + F
@@ -22,7 +22,7 @@
 + F (padronizacao?)
 
 ** 4. Os requisitos nao funcionais da categoria
-+ F (performance)
++ F (permanece)
 + F (manutencao nao)
 + V
 + V
@@ -79,8 +79,8 @@
 
 ** 12. O padrão observer ??
 + V
-+ ..
-+ F, push :: observadores para observador
++ F
++ V
 + F
 + V
 
@@ -95,16 +95,16 @@
 - R1 :: Um dos pais deve submeter, atráves duma aplicação que se instala no telemóvel e cuja interfase gráfica se adapta a esse telemóvel, o seu pedido de subsídio.
 
   + Como um dos pais quero submeter o meu pedido de subsídio.
-  + Como um dos pais quero que o processo de submissao de pedidos seja feito através de um aplicativo mobile que se possa instalar no telemóvel
-  + Como um dos pais quero que esse aplicativo tenha uma interfase gráfica que se adapte ao telemóvel em questão.
+  + O processo de submissao de pedidos tem que ser feito através de um aplicativo mobile
+  + O aplicativo tem que ter uma interfase gráfica que se adapte ao telemóvel em questão.
 
   + Justificacao ::  Observando o requisito conseguimos perceber que estamos a misturar requisito funcional com nao funcional, separando-o conseguimos manter uma melhor organização. Com isto, conseguimo-lo separar em 1 req funcional e 2nao funcionais.
 
 - R2 :: O sistema, por regra, atribui, a cada pedido de subsídio submetido, um fiscal, que é escolhido em função da freguesia de residência do agregado familiar.
 
-  + Cada pedido de subsídio submetido tem de ter um fiscal atribuído
+  + Como ficals quero ser atribuido compedidos de subsidio.
 
-  + Como fiscal, quero que o sistema me atribuia os pedidos de subsídio submetidos em função da freguesia de residencia do agregado familiar
+  + O sistema tem q atribuir os pedidos de subsídio submetidos em função da freguesia de residencia do agregado familiar
 
   + justificacao :: Com esta separação conseguimos separar duas funcionalidades diferentes e distintas. Conseguindo com isto que estes requisitos passem a ser mais simples e claros.
 

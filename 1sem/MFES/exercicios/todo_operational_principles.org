@@ -31,9 +31,9 @@ pred op2 {
 }
 
 
-pred op3 { //?
+pred op3 {
 	// A task can only be pending after being added
-   all t: Task | always add[t] implies after t in Pending'
+    all x : Task | always (x in Pending implies before once add[x])
 }
 
 
@@ -61,8 +61,7 @@ pred op7 {
 }
 
 
-pred op8 { //??
+pred op8 { //
 	// If all tasks are done the only action that can occur is a delete
-    //all t : Task | always t in Done implies after delete[t]
-    always ((Task in Done and Task not in Pending) implies  always (all t:Done | delete[t] ))
+    always (Task = Done implies (always stutter or (stutter until (some x : Task | delete[x]))))
 }
