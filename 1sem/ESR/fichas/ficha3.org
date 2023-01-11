@@ -1,0 +1,97 @@
+#+title: Ficha3
+
+* Áudio e do Vídeo
+** 1.
+?????
+** 2. Existem dois tipos de redundância em vídeo. Descreva-os e discuta como podem ser explorados para obter uma compactação eficiente do vídeo. Qual o custo/benefício do processo de compactação?
+
+*** Spacial coding
+Espacial é quando temos vários bits de um frame com a mesma cor, através disto, em vez de mandarmos N valores com a mesma cor, mandamos apenas 2 valores: o valor da cor e o númeor de vezes que ele se repete.
+
+
+
+*** Temporal coding
+
+Temporal, é quando podemos ter a redundância entre um frame e o frame a seguir, isto é, esses frames são parecidos entre eles.
+
+Para evitar esta redundância, envia-se apenas as diferenças entre esses frames, não enviando os 2 frames completos
+
+*** Qual o custo/benefício do processo de compactação?
+
+Com esta compactação, temos um custo maior no processamento, pois antes de ser enviado o vídeo temos que o analisar e processar e, depois de o recebermos temos que o voltar a reconstruir.
+
+Por outro lado, temos um ganho no tempo de upload e download de informação, pois a quantidade de dados é menor.
+
+Este processo compensa, principalmente quando a rede é lenta e fraca, aka demora bastante a trocar informação com a rede.
+
+** 3. Suponha que um sinal de áudio analógico é amostrado 16000 vezes por segundo e cada amostra é quantizada num de 1024 níveis. Qual seria a taxa de bits resultante do sinal áudio digital PCM?
+
+#+begin_src latex
+1024 = 2^10
+
+Logo, 16000* 10 = 1.6 * 10^5
+#+end_src
+
+Outro exemplo
+#+begin_src latex
+8 000 amostras por segundo
+256 níveis
+
+258 = 2^8
+
+Logo, 8000* 8 = 6.4 * 10^4
+#+end_src
+
+** 4.  As aplicações multimédia podem ser classificadas em três categorias principais.
+
+- Streaming, store :: Streaming de aúdio e de vídeo
+  Tem tolerancia a falhas
+  + Streaming :: pode ser começada antes do dowload inteiro dop ficheiro
+  + store (at server) ::  pode ser transmitido mais rápido do que audio/video é renderizado (para isso é necessário que o cliente tenha um buffer)
+  + exemplos ::  Netflix, youtube
+
+- Video-conferencia ::  chamada de vídeo ou de voz sobre um IP
+  Mais troca de dados, tolera falhas
+  + conversa iterativa entre humanos, que limita a tolerância a atrasos
+
+  + exemplos ::  Zoom, Skype
+
+- Streaming Live :: troca de ficheiros
+  + Não tolera falhas nem delay
+
+  + exemplos :: evento desportivo ao vivo
+
+
+* Vídeo e streaming
+** 1. 2 protocolos de suport de vídeo streaming sobre UDP
+   - HTTP puro :: No qual o servidore escolhe um ficheiro para difundir, e não há versões ou adaptatividade. Independentemente da qualidade da ligação utilizada.
+   - DASH ::  um protocolo, no qual o servidor difunde o ficheiro a ser transmitido em diferentes chunks. Um dado cliente que pretenda esse mesmo ficheiro,
+
+** 2.
+- Um dos principais problemas é a existencia de muitos clientes, que irá gerar grande congestão de redes (para ajudar podemos adicionas + CND content distribution network , e os clientes pedem info aos CNG)
+
+- é necessário que uma streaming que esteja a dar coincida com o tempo original, mas visto que o delay da rede é variável, é necessário que o cliente tenha um buffer para controlar este requirimento.
+
+- outros desafios é a interação do cliente com a streaming (pausa, passar a frente, andar para trás)
+
+- Pacotes de vídeo podem ser perdidos ou retransmitidos
+** 3
+
+- taxa constante :: 2 Mbps = 2 Megabit por 1 segundo
+- a reprodução so começa quando forem recebido 8 Mbits
+
+ #+begin_src latex
+ 2 Mbits - 1 s
+ 8 Mbits - x s
+
+ x = \frac {8 * 1} {2}
+   = 4 segundos
+ #+end_src
+
+* Serviço de Voz sobre IP
+** 1.
+** 2.
+* Protoclo de Sinalização SIP
+** 1.
+** 2.
+** 3.
