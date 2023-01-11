@@ -2,7 +2,16 @@
 
 * Áudio e do Vídeo
 ** 1.
-?????
+O volume de dados do monstro é 20 vezes maior que o da Bela, apesar de ambas as sessões serem de 1 hora.
+
+Stored audio e sored video são ambos sensíveis a atrasos, cerca de alguns segundos e ambos são tolerantes a perdas.
+
+*** Monstro
+4 Mbps * 60 * 60 = 1800 MB
+*** Bela
+200 kbps / 8 * 60 * 60 = 90 MB
+
+
 ** 2. Existem dois tipos de redundância em vídeo. Descreva-os e discuta como podem ser explorados para obter uma compactação eficiente do vídeo. Qual o custo/benefício do processo de compactação?
 
 *** Spacial coding

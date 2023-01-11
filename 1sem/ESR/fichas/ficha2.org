@@ -88,7 +88,7 @@ Existem 2 principais protocolos PIM:
 ** Sparse Mode
 - hosts indicam o seu interesse através de IGMP ou MLD
 
-- um dos routers é eleito como *designated router (DR)*, responsáveç por se juntar no grupo de multicast e encaminhar todo o tráfego de rede.
+- um dos routers é eleito como *designated router (DR)*, responsável por se juntar no grupo de multicast e encaminhar todo o tráfego de rede.
 
 - routes enviam mensagens *PIM ( * ,G) Join* -> forwarding
 state in routers -> Rendezvous Point Tree (RPT)

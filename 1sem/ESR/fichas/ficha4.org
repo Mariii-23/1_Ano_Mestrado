@@ -1,0 +1,45 @@
+#+title: Ficha4
+
+* Suporte a Tempo-Real: RTP/RTCP
+Na conceção de diversos serviços em rede, os protocolos Real-Time Protocol (RTP) e Real-Time Control Protocol (RTCP)
+têm um papel importante.
+** a. Diga qual o propósito destes protocolos e a forma como estão articulados numa mesma sessão.
+
+O protocólo  RTP é usado para especificar estruturas de pacotes para a transferência de dados em tempo real, como áudio ou vídeom sobre rede IP (UDP). Este protocólo é projetado para ser usado em conjunto com o RTCP, este serve para monitorizar a qualidade do fluxo de dados e fornecer feedback sobre a sesão em tempo real.
+
+Quando há uma sessão em tempo real, os pacotes de dados são enviados usando RTP, e o RTPC é usado para enviar msg de controlos entre os participantes da sessão. Cada pacote de RTPC contém estatísticas que são úteis para a aplicação, tais como o Nº de pacotes enviados, o nº de pacotes perdidos, o intervalo jitter,...
+Através destas mensagens de controlo conseguimos melhorar a performance da aplicação.
+
+O RTCP também serve para sincronizar diferentes media streams sobre uma sessão de RTP (ex video conferencia, em que cada um dos sender gera uma stream RTP de aúdio e outra de vídeo).
+
+
+** b. Se o protocolo RTP não garante a entrega de dados em tempo-real, porque razão é designado de “tempo-real”?
+O protocolo Real-Time Protocol (RTP) é chamado de "tempo real" porque foi desenvolvido para a transferência de media streams em tempo real, como áudio e vídeo. Este foi projetado para ser usado em conjunto com o Real-Time Control Protocol (RTCP), que é usado para monitorizar a qualidade do fluxo e fornecer feedback sobre essa mesma sessão.
+
+No entanto, é importante notar que o RTP sozinho não garante a entrega de pacotes em tempo real. Este apenas fornece um mecanismo para a transferência de pacotes de media em tempo real.
+A entrega destes pacotes pode ser afetada por vários fatores, como a congestão da rede, atrasos na entrega,...
+
+Para garantir a entrega de pacotes em tempo real, é necessário um mecanismo adicional, como o protocolo UDP.
+
+** c. Descreva resumidamente que tipo de reports o RTCP contempla e a sua finalidade.
+
+O RTCP inclui dois tipos de relatórios: relatórios de participante e relatórios de source.
+
+- sender report packets :: são enviados pelo recetor(quem envia a stream) e, incluem informações sobre o tempo atual, o nº de pacotes enviados e o número de bytes mandados
+
+- source description packets :: são enviados pelo recetor e contém informação sobre o email, nome do sender.
+
+  Provide mapping between the SSRC and the user/host name.
+
+- receiver report packets :: são enviados pelos participantes da sessão e, incluem informações sobre o número de sequência do último pacote recebido, o número de pacotes perdidos e a média interarrival jitter
+
+
+A finalidade dos relatórios do RTCP é fornecer feedback sobre a sessão de media em tempo real para que os participantes da sessão possam ajustar a qualidade do fluxo de acordo com o que se melhor adequar a esses valores. Estes também são usados para sincronizar relógios entre os participantes da sessão (ex. video conferencia)
+
+* Novas opções protocolares: SCTP e QUIC
+
+ Apesar do TCP ser dos protocolos de transporte mais usado na Internet, apresenta características que podem ser um inconveniente para certas aplicações.
+
+** a. Explique a motivação subjacente ao aparecimento de protocolos como o SCTP e o QUIC.
+
+** b. Descreva as características do protocolo SCTP, salientando as funcionalidades oferecidas ao nível aplicacional. Dê exemplos de aplicações ou serviços que podem beneficiar do seu uso.
