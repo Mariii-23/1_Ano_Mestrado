@@ -64,10 +64,13 @@ Logo, 8000* 8 = 6.4 * 10^4
 
 * Vídeo e streaming
 ** 1. 2 protocolos de suport de vídeo streaming sobre UDP
-   - HTTP puro :: No qual o servidore escolhe um ficheiro para difundir, e não há versões ou adaptatividade. Independentemente da qualidade da ligação utilizada.
+   - HTTP puro :: No qual o servidor escolhe um ficheiro para difundir, e não há versões ou adaptatividade. Independentemente da qualidade da ligação utilizada.
+    Com isto a taxa de envio é sempre constante, e caso a rede esteja congestionada, vai ter que ficar a espera.
    - DASH ::  um protocolo, no qual o servidor difunde o ficheiro a ser transmitido em diferentes chunks. Um dado cliente que pretenda esse mesmo ficheiro,
 
-** 2.
+** 2. Identifique e explique potenciais inconvenientes que podem afetar um serviço de vídeo streaming sobre UDP
+- Não tem qualidade de controlo de stream como DASH, tem de ser a aplicação a tratar disso. Pode ter problemas com firewall, e precisa de implementar mensagens de controlo, porque UDP só troca mensagens.
+
 - Um dos principais problemas é a existencia de muitos clientes, que irá gerar grande congestão de redes (para ajudar podemos adicionas + CND content distribution network , e os clientes pedem info aos CNG)
 
 - é necessário que uma streaming que esteja a dar coincida com o tempo original, mas visto que o delay da rede é variável, é necessário que o cliente tenha um buffer para controlar este requirimento.
@@ -75,8 +78,7 @@ Logo, 8000* 8 = 6.4 * 10^4
 - outros desafios é a interação do cliente com a streaming (pausa, passar a frente, andar para trás)
 
 - Pacotes de vídeo podem ser perdidos ou retransmitidos
-** 3
-
+** 3 Exercisio
 - taxa constante :: 2 Mbps = 2 Megabit por 1 segundo
 - a reprodução so começa quando forem recebido 8 Mbits
 
@@ -89,9 +91,60 @@ Logo, 8000* 8 = 6.4 * 10^4
  #+end_src
 
 * Serviço de Voz sobre IP
-** 1.
-** 2.
-* Protoclo de Sinalização SIP
-** 1.
-** 2.
-** 3.
+** 1. Caracterize o serviço de voz sobre IP em termos de qualidade e sensibilidade do serviço face a variações no desempenho da rede IP subjacente
+
+O serviço de voz sobre IP, tenta dar o melhor serviço que a rede disponibiliza.
+
+Este serviço é muito sensivel às variações da rede. Altos delay na rede fazem-se notar para o cliente (>300msec :bad)
+
+*** Algumas características
+- são enviados segmentos a cada 20 msec durante talkspurt
+
+
+
+** 2. Explique um dos métodos estudados que permita ao recetor recuperar eventual perda de pacotes de voz.
+
+*** FEC
+
+[[./ficha3-FEC]]
+Ao enviarmos um pacote vamos incluir uma compressão do anterior, assim, no caso do pacote anterior se perder, pode-se recuperar uma versão com pior qualidade no pacote seguinte.
+
+
+*** FEC 2
+
+[[./ficha3-FEC2]]
+Um outro método é dividir *audio chunks* em pequenas unidades, e os pacotes enviados conterem pequenas unidades de diferentes chunks. Assim, se um pacote se perder, continuamos a ter a maior parte do chunk original. Neste caso nao temos redundância no overhead, mas aumentamos a latência e o delay. Visto que temos que esperar por múltiplos pacotes para conseguirmos voltar a reagrupar os *audio chunks* originais.
+
+
+
+* Protocolo de Sinalização SIP
+** 1. Diga quais os objetivos a que o protocolo SIP pretende dar resposta?
+SIP é um protocolo para criar, modificar e terminar sessĩes com 1 ou mais participantes. Os principais objetivos são:
+
+- Gerir sessões
+- Permitir encontrar utilizadores a partir de um determinado username/email, independentemente do dispositivo a que eles estejam ligador
+- Iniciar, controlar e desligar chamadas.
+
+** 2. Identifique e descreva as principais entidades que sustentam a operação do protocolo SIP.
+
+- user agent :: temos o user agent client (UAC) e o user agent server (UAS)
+  + Server para associar um utilizador à rede
+  + manda pedidos e recebe/manda respostas
+
+- redirect  server :: Serve para redirecionar o cliente para contactar um conjunto alternativo de URIs
+
+- proxy server :: server e cliente
+  + faz request para outros clientes
+
+- registrar
+  + servidor que aceita REGISTER requests
+
+  + armazena informações que recebe nos pedidos na localização do serviço do domínio (armazena clientes)
+
+
+** 3. Ilustre através de um exemplo, o estabelecimento de uma sessão entre dois utilizadores SIP localizados: (i) no mesmo domínio SIP; e (ii) em domínios SIP diferentes.
+(i)
+[[./ficha3-sip1.png]]
+
+(ii)
+[[./ficha3-sip2.png]]
