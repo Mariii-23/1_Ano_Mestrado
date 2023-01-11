@@ -1,0 +1,40 @@
+#+title: Ficha1
+
+* 1 Cliente-servidor vs Peer-to-Peer
+a) Diferenças
+
+   - No paradigma *Cliente-Servidor* temos 2 entidades principais envolvidas, o servidor e o cliente. Os clientes não comunicam entre si, estes realizam pedidos e recebem respostas do servidor. Qualquer comunicação entre clientes passa primeiro pelo servidor, que fica responsável por distribuir as mensagems pelos clientes conectados.
+
+   - No paradigma *Peer-to-Peer*, apenas existe uma entidade envolvida, o cliente. Aqui, os clientes comunicam e transferem dados diretamente de uns para os outros.
+
+b) Vantagens e desvantagens
+   - Cliente-Servidor :: é considerado menos complexo de implentar. O servidor tem que permanecer sempre ligado, e o IP deste, é estático. Por outro lado, este não escala também, visto que uma maior quantidade de dados é enviada e recebida pelos servidores (Se tivermos que mandar um vídeo a N clientes, iremos ter que mandar N msg). Para conseguirmos responder a este aumento de *throughput*, é necessário termos mais *data centers*.
+
+   - Peer-to-Peer :: é considerado mais complexo de implementar e de gerir, visto que não temos um servidor sempre ligado e todos os clientes vão ter IPs dinámicos. Este paradigma escala melhor porque clientes que se juntem, pedem e fornecem serviços. Desta forma o aumento de transferências de dados é acompanhada de um aumento de capacidade de transferência.
+
+* 2
+
+| tipos de aplicação    | débito (througput) | Atraso e/ou Jitter       | Perda de dados | Aplicações |
+| Web browsing          | Elástico           | Não sensível             | Sem perda      | Firefox    |
+| Multimedia streaming  | 10kbps-5Mbps       | Sensível(alguns s)       | Tolera perda   | Netflix    |
+| Ip Telephony(VoIp)    | Kbps-1Mbps         | Sensível (dezenas de ms) | Tolera perda   | Skype      |
+| File transfer/shraing | Elástico           | Não sensível             | Sem perda      | Dropbox    |
+| Interactive Games     | Alguns kbps        | Sensível (dezenas de ms) | Tolera perda   | Minecraft  |
+| Video conferencing    | 10kbps-5Mbps       | sensível(dezenas de ms)  | Tolera perda   | Zoom       |
+* 3.
+** i) Cliente-servidor
+Tempo mínimo = max{ N * F / us , F / d_min }
+
+- N = 10 -> 40s
+- N = 100 -> 400s
+- N = 1000 -> 4000s
+
+u1 não influência  o resultado para este paradigma ?
+
+** ii) Peer-to-Peer
+Tempo mínimo = max { F / us, F / d_min, (N*F) / (us+ somatório(u_i)) }
+
+| N\ui | 1Mbps | 5Mbps | 10Mbps |
+|   10 |    40 |    40 | 40     |
+|  100 |       |       |        |
+| 1000 |       |       |        |
