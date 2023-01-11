@@ -1,0 +1,117 @@
+#+title: Ficha2
+
+* 1. Multicast e árvores de distribuição
+** a) Difentes modelos
+*** Construídas por fonte ativa (source-tree)
+( Existe uma árvore separada para cada source que envie dados para um grupo.   the tree is rooted at the node/router adjacent to the source ??)
+
+- Uma árvore de origem implica que a rota entre a origem multicast e os seus receptores é o caminho mais curto disponível.
+
+- A origem do tráfego multicast encontra-se localizada na raiz da árvore. Os recetores estão localizados no final das ramificações.
+
+- O tráfego multicast flui da origem para "baixo" na árvore em direção aos receptores usando a tabela de encaminhamteo multicast. A tabela de encaminhamento multicast consistem em uma série de entradas *(S,G)* (S -> source, G-> grupo multicast que os recetores se juntaram)
+
+  [[./ficha1-fonteAtiva.png]]
+
+- Existe uma árvore de origem separada para cada origem que se encontre a transmitir pacotes multicast, mesmo que essas origens estejam a transmitir dados para o mesmo grupo. Isto signifca, que haverá  uma entrada de estado de encaminhento (S,G) para cafa fonte ativa na rede.
+
+
+*** Partilhadas
+(única árvore para todas as sources que mandam dados para o grupo - rooted at some select point *Rendezvous Point*)
+(precisam de mecanismos para transportar dados da sources-> RP)
+
+- Este tipo de dados diferenciam-se das outras porque a raiz da árvore é um ponto comum em algum lugar da rede, conhecido como *Rendezvous Point(RP)*.
+
+- O RP é um ponto no qual os hosts/receptores se unem para aprender as fontes ativas. As fontes multicast devem transmitir o seu tráfego para o RP. Quando os receptores se juntam a um grupo de multicast em uma árvore compartilhada, a raiz da árvore vai ser sempre o RP, e o tráfego multicast é transmitido do RP->Recetores.
+
+- Um RP pode ser a raiz de todos os grupos multicast na rede, ou diferentes intervalos de grupos multicast podem ser associados a diferentes RPs.
+
+- As entradas de encaminhamento multicast para uma árvore compartilhada usam a notação (* , G). Isso ocorre porque todas as origens de um grupo específico compartilham a mesma árvore. Portanto, o ' * ' representa todas as fontes. O objetivo final é aprender a origem usando o RP e, uma vez que o RP descobre a origem e os receptores, a árvore fica completa. RP atua como um intermediário que ajuda os Receptores a descobrir a fonte e converter a entrada (* ,G) em (S,G).
+
+- Below Diagram shows the shared tree.  Receiver1 and Receiver 2 send (*,G) PIM join to RP (root or the tree). Also Source 10.10.10.1 update RP about its presence using PIM 'Register' message. RP then updates source and group (S,G) details to last hop routers down the tree completing the tree.
+
+- Examples of Shared tree are Any Source Multicast (ASM) using PIM Sparse-mode.
+
+  [[./ficha1-sharedTree.png]]
+
+- Reverse Path Forwarding (RPF) :: protocolos de roteamento precisam de determinar a próxima interface upstream para o grupo multicast.
+
+  Routers usam a interface de upstream :
+  + como interface de saida para pacotes de controlo (join, leave,..)
+
+  + como interface de entrada para dados multicaste (se pacotes chegarem de uma interface distinta -> descartar/ignorar pacotes)
+
+
+
+
+
+** b) Processo de construção
+*** Construídas por fonte ativa
+Routers que se queiram juntar ao grupo multicast enviam uma mensagem (S,G) para o *next upstream router*, com a informação da source, e do grupo multicast que se pretendem juntar.
+
+*** Partilhadas
+
+- Routers que se queiram juntar ao grupo multicast enviam uma mensagem (* ,G) para o *RP*, com a informação do grupo multicast que se pretendem juntar.
+- Sources que se queira juntar mandam um *PIM Register* ao RP.
+- RP atualiza os detalhates da source e o grupo (S,G) para os *last hop routers down the tree*, completando assim a árvore
+
+
+
+
+** c) Vantagens e desvantagens em termos de desempenho
+
+*** Construídas por fonte ativa
+**** Vantagens
+- multicast data paths são eficientes
+
+**** Desvantagens
+- Aumentando o número de origens (sources) ficamos com problemas de escalabilidade
+
+*** Partilhadas
+**** Vantagens
+- para um número maior de sources, árvores partilhadas são melhores do que por fonte ativas.
+**** Desvantagens
+- os caminhos de dados são ineficientes, visto que precisam de mecanismos de seleção para a raiz das árvores (RP).
+
+- Shared tree são inseguras, visto que qualquer fonte pode enviar multicast para os recetores que ingressaram um dado grupo. Os recetores encontram-se interessados apenas no tráfego multicast do grupo ao qual se juntaram, sem considerarem a identidade da fonte, que pode ser qualquer um (hacker).
+
+* 2. O protocolo PIM (Protocol Independent Multicast) permite criar suporte para encaminhamento multicast ao nível de rede. Por que razão o protocolo PIM contempla (e implementa) dois modos de operação distintos, o PIM-SM (Sparse Mode) e o PIM-DM (Dense Mode)? Dê exemplos práticos em que se justifica a utilização de uma ou outra versão do protocolo.
+
+PIM é uma família de protocolos que cuidam dos diferentes modo de multicasting na transmissão bem-sucedida de informaçao por todos os nodos existentes. Todos eles têm um formato semelhante de mensagens de controlo.
+
+Existem 2 principais protocolos PIM:
+
+- PIM Sparse Mode :: é um protoco *opt-in* que, normalmente usa share-trees (mas pode usar a outra)
+
+- PIM Dense Mode :: é um procolo *opt-out* (brodcast/prune), que usa apenas source-trees. (usado em pequenos domínios, e redes com poucos recursos limitados)
+
+** Sparse Mode
+- hosts indicam o seu interesse através de IGMP ou MLD
+
+- um dos routers é eleito como *designated router (DR)*, responsáveç por se juntar no grupo de multicast e encaminhar todo o tráfego de rede.
+
+- routes enviam mensagens *PIM ( * ,G) Join* -> forwarding
+state in routers -> Rendezvous Point Tree (RPT)
+
+- vantagens
+  + escala bem
+  + suporta os dois tipos de árvores. (shared trees - nao precisa de manter o estado sa source) (source-based - mais eficiente nos caminhos de dados)
+- desvantagens
+  + shared-trees
+    + requer encapsulamento/desacupulamento entre a source e o RP
+    + é necessário um mecanismos de RP para source
+
+** Dense Mode
+- quando entra, assume que todo o domínio está interessado a receber
+
+- quando chega um pacote o router vai verificar se chegou através da interface mais próxima da source, caso contrário o pacote é dropped
+
+- no caso de um router não precisas de receber dados envia uma Msg *PIM (S,G) Prune* para  o router upstream, assim ele para de enviar dados.
+
+- vantagens
+  + eficiente se os recetores estiverem bem distribuidos pela rede
+  + evita a complexidade da configuração do RP
+- desvantagens
+  + não escala bem para grandes domínios, normalmente é usado em pequenos domínios (opt-out protocol)
+  + não escala bem para domínios, onde maior parte dos recetores não querem receber data
+  + todos os routers precisam de saber todo o domínio
