@@ -88,15 +88,17 @@ Logo, 8000* 8 = 6.4 * 10^4
 
 - Pacotes de vídeo podem ser perdidos ou retransmitidos
 ** 3 Exercisio
-- taxa constante :: 2 Mbps = 2 Megabit por 1 segundo
+- taxa constante :: 2 Mbps = 2 * 1000 Kbps = 2 * 1000 * 1000  2 bits por 1 segundo
 - a reprodução so começa quando forem recebido 8 Mbits
+  - 8 Mbits = 8 * 1024 Kbits = 8* 1024*1024 bits
 
  #+begin_src latex
- 2 Mbits - 1 s
- 8 Mbits - x s
 
- x = \frac {8 * 1} {2}
-   = 4 segundos
+ 2* 1000 * 1000 - 1 s
+ 8* 1024 * 1024 - x s
+
+ x = \frac {8 * 1024*1024} {2 * 1000 * 1000}
+   = 4.19 segundos
  #+end_src
 
 * Serviço de Voz sobre IP
@@ -115,13 +117,13 @@ Este serviço é muito sensivel às variações da rede. Altos delay na rede faz
 
 *** FEC
 
-[[./ficha3-FEC]]
+[[./ficha3-FEC.png]]
 Ao enviarmos um pacote vamos incluir uma compressão do anterior, assim, no caso do pacote anterior se perder, pode-se recuperar uma versão com pior qualidade no pacote seguinte.
 
 
 *** FEC 2
 
-[[./ficha3-FEC2]]
+[[./ficha3-FEC2.png]]
 Um outro método é dividir *audio chunks* em pequenas unidades, e os pacotes enviados conterem pequenas unidades de diferentes chunks. Assim, se um pacote se perder, continuamos a ter a maior parte do chunk original. Neste caso nao temos redundância no overhead, mas aumentamos a latência e o delay. Visto que temos que esperar por múltiplos pacotes para conseguirmos voltar a reagrupar os *audio chunks* originais.
 
 
@@ -145,7 +147,7 @@ SIP é um protocolo para criar, modificar e terminar sessĩes com 1 ou mais part
 - proxy server :: server e cliente
   + faz request para outros clientes
 
-- registrar
+- registrar ::
   + servidor que aceita REGISTER requests
 
   + armazena informações que recebe nos pedidos na localização do serviço do domínio (armazena clientes)
@@ -153,7 +155,6 @@ SIP é um protocolo para criar, modificar e terminar sessĩes com 1 ou mais part
 
 ** 3. Ilustre através de um exemplo, o estabelecimento de uma sessão entre dois utilizadores SIP localizados: (i) no mesmo domínio SIP; e (ii) em domínios SIP diferentes.
 (i)
-[[./ficha3-sip1.png]]
-
-(ii)
 [[./ficha3-sip2.png]]
+(ii)
+[[./ficha3-sip1.png]]

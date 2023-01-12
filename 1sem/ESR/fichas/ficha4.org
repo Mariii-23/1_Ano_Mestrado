@@ -5,7 +5,7 @@ Na conceção de diversos serviços em rede, os protocolos Real-Time Protocol (R
 têm um papel importante.
 ** a. Diga qual o propósito destes protocolos e a forma como estão articulados numa mesma sessão.
 
-O protocólo  RTP é usado para especificar estruturas de pacotes para a transferência de dados em tempo real, como áudio ou vídeom sobre rede IP (UDP). Este protocólo é projetado para ser usado em conjunto com o RTCP, este serve para monitorizar a qualidade do fluxo de dados e fornecer feedback sobre a sesão em tempo real.
+O protocólo  RTP é usado para especificar estruturas de pacotes para a transferência de dados em tempo real, como áudio ou vídeom sobre rede IP (UDP). Este protocólo é projetado para ser usado em conjunto com o RTCP, este serve para monitorizar a qualidade do fluxo de dados e fornecer feedback sobre a sessão em tempo real.
 
 Quando há uma sessão em tempo real, os pacotes de dados são enviados usando RTP, e o RTPC é usado para enviar msg de controlos entre os participantes da sessão. Cada pacote de RTPC contém estatísticas que são úteis para a aplicação, tais como o Nº de pacotes enviados, o nº de pacotes perdidos, o intervalo jitter,...
 Através destas mensagens de controlo conseguimos melhorar a performance da aplicação.
@@ -42,4 +42,15 @@ A finalidade dos relatórios do RTCP é fornecer feedback sobre a sessão de med
 
 ** a. Explique a motivação subjacente ao aparecimento de protocolos como o SCTP e o QUIC.
 
+- Facilitar a partilha de conteúdos, e poder enviar em paralelo. (ex para um site mandar imagens e texto, com TCP tem de ser sequencial)
+- Aumentar a segurança em termos de ataques
+-
+
 ** b. Descreva as características do protocolo SCTP, salientando as funcionalidades oferecidas ao nível aplicacional. Dê exemplos de aplicações ou serviços que podem beneficiar do seu uso.
+- framing - permite juntar vários pedaços de informação que são úteis estarem juntos, e não os quebra.
+- 4-way handshake - mais segurança, evitar denial of service
+- multistreaming - permite que numa sessão sejam trocadas várias streams simultaneamente - Web pages, para carregar conteúdo.
+- multihoming - vários ips associados. Assim, caso um vá abaixo, troca. Serve para redundância, não balancear cargas. Qualquer aplicação, para manter a segurança do servidor
+- Multistream, num pode ir gif, no outro texto
+
+  [[./sctp.png]]
