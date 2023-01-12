@@ -1,4 +1,6 @@
 #+title: Todo_behavior
+
+#+begin_src bash
 sig Task {}
 
 var sig Pending in Task {}
@@ -46,3 +48,4 @@ pred behavior {
 	// Transitions
 	always (stutter or some t : Task | add[t] or complete[t] or delete[t])
 }
+#+end_src

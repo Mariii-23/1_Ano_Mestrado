@@ -1,6 +1,7 @@
 #+title: Course
 http://alloy4fun.inesctec.pt/Xgzv77ZSnfrrFLjxt
 
+#+begin_src bash
 open util/ordering[Grade]
 
 sig Person {
@@ -117,3 +118,4 @@ pred inv15 {
 	// Students working on the same project in a course cannot have marks differing by more than one unit
    // all disj s, s2: Student | some c: Course | lone p: s.projects | p in s2.projects and p in c.projects => grades.
 }
+#+end_src

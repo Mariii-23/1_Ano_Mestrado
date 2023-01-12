@@ -1,6 +1,7 @@
 #+title: Todo_operational_principles
 http://alloy4fun.inesctec.pt/2eAoC9mGjBvCW5yPJ
 
+#+begin_src bash
 sig Task {}
 
 var sig Pending in Task {}
@@ -65,3 +66,4 @@ pred op8 { //
 	// If all tasks are done the only action that can occur is a delete
     always (Task = Done implies (always stutter or (stutter until (some x : Task | delete[x]))))
 }
+#+end_src

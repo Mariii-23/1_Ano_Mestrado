@@ -1,5 +1,6 @@
 #+title: Insta_inv
 
+#+begin_src bash
 sig User {
 	follows : set User,
 	sees : set Photo,
@@ -68,3 +69,4 @@ pred inv8 {
 	// An user only sees ads from followed or suggested users
     all x : User | all a : x.sees | a in Ad => a in x.follows.posts or a in x.suggested.posts
 }
+#+end_src

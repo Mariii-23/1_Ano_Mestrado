@@ -2,6 +2,7 @@
 
 http://alloy4fun.inesctec.pt/KC4Km53MR47kLGYCN
 
+#+begin_src bash
 sig Track {
 	succs : set Track,
 	signals : set Signal
@@ -73,3 +74,4 @@ pred inv10 {
 	// Every track before a junction has a semaphore
     all t: Track, j: Junction | j in t.succs => some s: Semaphore | s in t.signals
 }
+#+end_src
