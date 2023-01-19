@@ -1,0 +1,86 @@
+#+title: Operation_principles
+http://alloy4fun.inesctec.pt/RnQaRZEFQhKmnLYcL
+
+#+begin_src bash
+sig User {
+	var inbox : set Message
+}
+sig Content {}
+sig Message {
+	from : User,
+	to : User,
+	content : Content
+}
+var sig Undelivered in Message {}
+
+// Specify the following operational principles.
+
+// Assume the existence of the following actions:
+// pred send[f : User, t : User, c : Content] {...}
+// pred receive[t : User, m : Message] {...}
+// pred stutter {...}
+
+// Counter-examples may depict systems that are purposely badly implemented.
+
+
+
+pred op1 {
+	// All messages in the inbox of an user are addressed to that user
+     always all m: Message, u: User | m in u.inbox => m.to = u
+}
+
+
+pred op2 {
+	// Undelivered messages cannot be in any inbox
+    always all m: Undelivered, u: User | m not in u.inbox
+}
+
+
+pred op3 {
+	// Any received message must have been sent before
+    always all m: Message, u: User  |  receive[u,m] => once send[m.from, m.to, m.content]
+}
+
+
+pred op4 {
+	// A message in an inbox can never be undelivered again
+    always all u: User, m: Message | m in u.inbox => always m not in Undelivered
+}
+
+
+pred op5 { //???
+	// If no messages are ever sent there will never be undelivered messages
+    all m: Message, u1, u2 :User | always (send[u1, u2, m.content] releases no Undelivered)
+}
+
+
+pred op6 {
+	// After a receive the respective message is no longer undelivered
+    always all m: Message, u: User | receive[u,m] => after m not in Undelivered
+}
+
+
+pred op7 {
+	// A message that becomes undelivered has never been undelivered before
+    always all m : Message | (m not in Undelivered;m in Undelivered) implies historically m not in Undelivered
+}
+
+
+pred op8 {
+	// If all possible messages have been received nothing else can happen
+    always (Message = User.inbox => always stutter)
+}
+
+
+pred op9 { //?
+	// Any received message was undelivered since it was sent
+    always all m: Message, u: User |  receive[u,m] implies (m in Undelivered since send[m.from,u,m.content])
+}
+
+
+pred op10 { //??
+	// After a send the respective message can only stop being undelivered after being received
+    //always all m: Message |
+}
+
+#+end_src
