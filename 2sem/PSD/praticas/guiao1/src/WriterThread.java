@@ -21,7 +21,7 @@ public class WriterThread extends Thread {
 
                 try {
                     //read from the shared queue
-                    buffer = this.chat.Get(next++);
+                    buffer = this.chat.get(next++);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }

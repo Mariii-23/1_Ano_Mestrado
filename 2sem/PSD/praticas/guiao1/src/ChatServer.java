@@ -14,6 +14,16 @@ public class ChatServer {
     private Lock l = new ReentrantLock();
     private Condition c = l.newCondition();
 
+    //private int next = 0;
+    //public int getNext() {
+    //    try {
+    //        this.l.lock();
+    //        return next++;
+    //    } finally {
+    //        this.l.unlock();
+    //    }
+    //}
+
     public void insert(ByteBuffer b) {
         try {
             this.l.lock();
@@ -29,12 +39,16 @@ public class ChatServer {
         }
     }
 
-    public ByteBuffer Get(int i) throws InterruptedException {
+    public ByteBuffer get(int i) throws InterruptedException {
         //while there's no new messages...
         while (QueueSize()<=i) {
-            this.l.lock();
-            //wait for the notification that there's a new message
-            this.c.await();
+            try {
+                this.l.lock();
+                //wait for the notification that there's a new message
+                this.c.await();
+            } finally {
+                this.l.unlock();
+            }
         }
         return this.queue.get(i);
     }
@@ -49,6 +63,7 @@ public class ChatServer {
 
         ServerSocketChannel ss = ServerSocketChannel.open();
         ss.bind(new InetSocketAddress(12345));
+        System.out.println("Server started");
 
         while(true) {
             SocketChannel s = ss.accept();

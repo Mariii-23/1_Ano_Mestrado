@@ -11,7 +11,7 @@ public class SlowChatClient {
         s.write(ByteBuffer.wrap("hello\n".getBytes()));
         ByteBuffer bb = ByteBuffer.allocate(1);
         while(s.read(bb)>0) {
-            System.out.printf("received 1 byte\n");
+            System.out.printf("recebi 1 byte\n");
             System.out.println(new String(bb.array()));
             bb.clear();
             try {
