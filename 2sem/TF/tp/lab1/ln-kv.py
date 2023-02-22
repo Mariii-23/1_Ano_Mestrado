@@ -17,10 +17,10 @@ def get_elem(key):
         return None
     return hash_table[key]
 
-def notify_clients(src,clients, key, value):
-    for client in clients:
-        if client != src:
-            send(src, client, body={type:"write", key:key, value:value})
+def notify_clients(key, value):
+    for client in node_ids:
+        if client != node_id:
+            send(node_id, client, type="write", key=key, value=value)
 
 
 def handle(msg):
@@ -50,7 +50,7 @@ def handle(msg):
         logging.info('node writing:: key:' , key, "value: ", value_key)
 
         add_elem(key, value_key)
-        notify_clients(node_id, node_ids, key, value_key)
+        notify_clients(key, value_key)
 
         reply(msg, type='write_ok')
     elif msg.body.type == 'cas':
@@ -65,7 +65,7 @@ def handle(msg):
         elif hash_table[key] == from_key:
             add_elem(key, to)
 
-            notify_clients(node_id, node_ids, key, value_key)
+            notify_clients(key, to)
             reply(msg, type='cas_ok')
         else:
             reply(msg, type="error", code=22, text="value doesnt match")
