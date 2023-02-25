@@ -10,19 +10,9 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ChatServer {
-    private List<ByteBuffer> queue= new ArrayList<>();
-    private Lock l = new ReentrantLock();
-    private Condition c = l.newCondition();
-
-    //private int next = 0;
-    //public int getNext() {
-    //    try {
-    //        this.l.lock();
-    //        return next++;
-    //    } finally {
-    //        this.l.unlock();
-    //    }
-    //}
+    private final List<ByteBuffer> queue = new ArrayList<>();
+    private final Lock l = new ReentrantLock();
+    private final Condition c = l.newCondition();
 
     public void insert(ByteBuffer b) {
         try {
@@ -33,15 +23,14 @@ public class ChatServer {
 
             //notify the threads that are waiting to get messages
             this.c.signalAll();
-        }
-        finally {
+        } finally {
             this.l.unlock();
         }
     }
 
     public ByteBuffer get(int i) throws InterruptedException {
         //while there's no new messages...
-        while (QueueSize()<=i) {
+        while (QueueSize() <= i) {
             try {
                 this.l.lock();
                 //wait for the notification that there's a new message
@@ -51,7 +40,7 @@ public class ChatServer {
             }
         }
         return this.queue.get(i);
-    }
+}
 
     public int QueueSize() {
         return this.queue.size();
@@ -65,7 +54,7 @@ public class ChatServer {
         ss.bind(new InetSocketAddress(12345));
         System.out.println("Server started");
 
-        while(true) {
+        while (true) {
             SocketChannel s = ss.accept();
 
             ReaderThread reader = new ReaderThread(chat, s);
