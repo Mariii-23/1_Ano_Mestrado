@@ -23,51 +23,51 @@ public class ChatServer {
         ss.register(sel, SelectionKey.OP_ACCEPT);
         System.out.println("Server started\n\n");
 
-        while(true) {
+        while (true) {
             sel.select();
             var keys = sel.selectedKeys().stream().toList();
-            for(SelectionKey key: keys) {
+            for (SelectionKey key : keys) {
 
-               if( key.isAcceptable()) {
-                   //System.out.println("key is acceptable");
+                if (key.isAcceptable()) {
+                    //System.out.println("key is acceptable");
 
-                   SocketChannel s = ss.accept();
-                   s.configureBlocking(false);
-                   SelectionKey nKey = s.register(sel, SelectionKey.OP_READ) ;
-                   nKey.attach(new ChatSession());
-                   clients.add(nKey);
+                    SocketChannel s = ss.accept();
+                    s.configureBlocking(false);
+                    SelectionKey nKey = s.register(sel, SelectionKey.OP_READ);
+                    nKey.attach(new ChatSession());
+                    clients.add(nKey);
 
-               } else if (key.isReadable()) {
-                   //System.out.println("Key is readable");
+                } else if (key.isReadable()) {
+                    //System.out.println("Key is readable");
 
-                   ByteBuffer buf = ByteBuffer.allocate(100);
-                   SocketChannel s = (SocketChannel) key.channel();
+                    ByteBuffer buf = ByteBuffer.allocate(100);
+                    SocketChannel s = (SocketChannel) key.channel();
 
-                   if (s.read(buf) < 0 ) {
-                       key.cancel();
-                       s.close();
-                   } else {
-                       System.out.println("Recevied:: " + new String(buf.array()));
-                       buf.flip();
-                       var clientsExceptSource = new ArrayList<>(clients);
-                       //FIXME: Commented out line to work as echo
-                       //clientsExceptSource.remove(key);
+                    if (s.read(buf) < 0) {
+                        key.cancel();
+                        s.close();
+                    } else {
+                        System.out.println("Recevied:: " + new String(buf.array()));
+                        buf.flip();
+                        var clientsExceptSource = new ArrayList<>(clients);
+                        //FIXME: Commented out line to work as echo
+                        //clientsExceptSource.remove(key);
 
-                       for (var k: clientsExceptSource) {
-                           ((ChatHandler) k.attachment()).handleRead(buf.duplicate());
-                           k.interestOps(k.interestOps() | SelectionKey.OP_WRITE);
-                       }
-                   }
+                        for (var k : clientsExceptSource) {
+                            ((ChatHandler) k.attachment()).handleRead(buf.duplicate());
+                            k.interestOps(k.interestOps() | SelectionKey.OP_WRITE);
+                        }
+                    }
 
-               } else if (key.isWritable()) {
-                   //System.out.println("Key is writable");
-                   var buf = ((ChatHandler) key.attachment()).handleWrite();
+                } else if (key.isWritable()) {
+                    //System.out.println("Key is writable");
+                    var buf = ((ChatHandler) key.attachment()).handleWrite();
 
-                   SocketChannel s = (SocketChannel) key.channel();
-                   s.write(buf);
+                    SocketChannel s = (SocketChannel) key.channel();
+                    s.write(buf);
 
-                   key.interestOps(SelectionKey.OP_READ);
-               }
+                    key.interestOps(SelectionKey.OP_READ);
+                }
             }
             sel.selectedKeys().clear();
         }
