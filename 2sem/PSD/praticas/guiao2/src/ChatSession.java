@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.nio.ByteBuffer;
 
 public class ChatSession implements ChatHandler {
@@ -8,11 +7,11 @@ public class ChatSession implements ChatHandler {
         stored = ByteBuffer.allocate(100);
     }
 
-    public void handleRead(ByteBuffer in) throws IOException {
+    public void handleRead(ByteBuffer in) {
         stored.put(in);
     }
 
-    public ByteBuffer handleWrite() throws IOException {
+    public ByteBuffer handleWrite() {
         var buf = stored.duplicate().flip();
         // clear the buffer
         stored.clear();

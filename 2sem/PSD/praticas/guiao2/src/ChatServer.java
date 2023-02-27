@@ -46,6 +46,8 @@ public class ChatServer {
                     if (s.read(buf) < 0) {
                         key.cancel();
                         s.close();
+                        //Remove the client from the clients
+                        clients.remove(key);
                     } else {
                         System.out.println("Recevied:: " + new String(buf.array()));
                         buf.flip();
