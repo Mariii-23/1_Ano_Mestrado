@@ -1,0 +1,171 @@
+#+title: Ficha 01
+
+* 3.1 KLM
+** 1
+
+4.4 segundos ::
+
+#+begin_src rust
+H mover a mão para o rato
+M preparação mental
+P apontar para o ficheiro
+B premir o botão do rato
+P arrastar para o caixote do lixo
+B largar o botão do rato
+H mover a mão para o teclado
+#+end_src
+
+*** (a) Determine se a opção de utilizar o menu será mais rápida que a opção de arrastar para o caixote do lixo. A conclusão seria a mesma se o caso a considerar fosse apagar 10 ficheiros?
+
+- Selecionar apenas um ficheiro :: 4.4 segundos
+
+#+begin_src rust
+H mover a mão para o rato
+M preparação mental
+P apontar para o ficheiro
+B premir o botão do rato
+P arrastar para a opção de apagar
+B premir o botão do rato
+H mover a mão para o teclado
+#+end_src
+
+
+Neste caso, o tempo será igual para ambas as opções.
+
+
+- Selecionar 10 ficheiros
+    No caso em que temos que selecionar os 10 ficheiros,  a opção com o menu será muito mais rápida
+
+  + Utilizar a opção de arrastar para o caixote do lixo :: 36.8 s
+
+    0.4 s
+    #+begin_src rust
+    H mover a mão para o rato
+    #+end_src
+
+    10 * 3.6 = 36 s
+    #+begin_src rust
+    M preparação mental
+    P apontar para o ficheiro
+    B premir o botão do rato
+    P arrastar para o caixote do lixo
+    B largar o botão do rato
+    #+end_src
+
+    0.4 s
+    #+begin_src rust
+    H mover a mão para o teclado
+    #+end_src
+
+
+  + Utilizar a opção do menu :: 15.2 s
+
+    1.6s
+    #+begin_src rust
+    H mover a mão para o rato
+    M preparação mental
+    #+end_src
+
+    10 * 1.2 = 12 s
+    #+begin_src rust
+    P apontar para o ficheiro
+    B premir o botão do rato
+    #+end_src
+
+    1.6s
+    #+begin_src rust
+    P arrastar para a opção de apagar
+    B premir o botão do rato
+    H mover a mão para o teclado
+    #+end_src
+
+***  (b) Sabendo que se pretende acrescentar um atalho (ˆD) à opção de apagar do menu, avalie se a sua implementação tornará a interface mais rápida.
+
+3.48 sec
+
+#+begin_src rust
+H mover a mão para o rato
+M preparação mental
+P apontar para o ficheiro
+B premir o botão do rato
+K premir o botão ^C
+H mover a mão para o teclado
+#+end_src
+
+
+*** (c) Com base nos resultados acima, avalie o impacto de utilizar atalhos numa interface.
+
+3.48 sec vs 4.4 sec
+
+A utilização de atalhos numa interface faz com que a utilização da interface se torne mais intuitiva e rápida.
+** 2
+*** a
+Aqui apenas foram considerados o preenchimento de NIF e nome
+
+- Figura 1 :: 6.4s + T(n)
+
+    1.6s
+    #+begin_src rust
+    H mover a mão para o rato
+    M preparação mental
+    #+end_src
+
+    9 * 1.20s = 10.8s
+    #+begin_src rust
+    P apontar para o butão
+    B premir o botão do rato
+    #+end_src
+
+    2.4s + T(n)
+    #+begin_src rust
+    M preparação mental
+    P apontar para o campo do nome
+    B premir o botão do rato
+    T(n) escrever o nome
+    #+end_src
+
+    0.4
+    #+begin_src rust
+    H mover a mão para o teclado
+    #+end_src
+
+- Escrever :: 3.2s + 2 * T(n)
+
+    0.4s
+    #+begin_src rust
+    H mover a mão para o rato
+    #+end_src
+
+    Escrever o NIF :: 2.4s + T(n)
+    #+begin_src rust
+    M preparação mental
+    P apontar para o campo do Nif
+    B premir o botão do rato
+    T(n) escrever o nome
+    #+end_src
+
+    Escrever o NIF :: 2.4s + T(n)
+    #+begin_src rust
+    M preparação mental
+    P apontar para o campo do nome
+    B premir o botão do rato
+    T(n) escrever o nome
+    #+end_src
+
+    0.4
+    #+begin_src rust
+    H mover a mão para o teclado
+    #+end_src
+
+*** (b) Sabendo que este formulário deverá ser preenchido por clientes, consegue identificar algum problema adicional na introdução do NIB, que a passagem para campos de texto irá agudizar? Qual?
+
+Sim, teríamos que adicionar uma verificação no sistema que conseguisse validar que o NIF introduzido se encontrava válido
+
+*** (c) Esse problema existirá caso quem preenche o formulário seja um funcionário? Justifique.
+
+Sim, visto que um funcionário ao preencher um dado NIF do cliente pode cometer erros e introduzir um NIF errado.
+** 3
+
+TODO:: UTILIZAR A FERRAMENTA
+
+* 3.2 Erros de utilização
