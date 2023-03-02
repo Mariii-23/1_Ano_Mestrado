@@ -3,7 +3,7 @@
 * 3.1 KLM
 ** 1
 
-4.4 segundos ::
+4.4 segundos
 
 #+begin_src rust
 H mover a mão para o rato
@@ -33,8 +33,7 @@ H mover a mão para o teclado
 Neste caso, o tempo será igual para ambas as opções.
 
 
-- Selecionar 10 ficheiros
-    No caso em que temos que selecionar os 10 ficheiros,  a opção com o menu será muito mais rápida
+- Selecionar 10 ficheiros ::  No caso em que temos que selecionar os 10 ficheiros, a opção com o menu será muito mais rápida.
 
   + Utilizar a opção de arrastar para o caixote do lixo :: 36.8 s
 
@@ -93,14 +92,17 @@ H mover a mão para o teclado
 #+end_src
 
 
+Com isto, conseguimos concluir que acrescentar um atalho à opção do menu tornará a interface mais rápida.
+
+
 *** (c) Com base nos resultados acima, avalie o impacto de utilizar atalhos numa interface.
 
 3.48 sec vs 4.4 sec
 
 A utilização de atalhos numa interface faz com que a utilização da interface se torne mais intuitiva e rápida.
+
 ** 2
-*** a
-Aqui apenas foram considerados o preenchimento de NIF e nome
+*** a) Aqui apenas foram considerados o preenchimento de NIF e nome
 
 - Figura 1 :: 6.4s + T(n)
 
@@ -159,13 +161,27 @@ Aqui apenas foram considerados o preenchimento de NIF e nome
 
 *** (b) Sabendo que este formulário deverá ser preenchido por clientes, consegue identificar algum problema adicional na introdução do NIB, que a passagem para campos de texto irá agudizar? Qual?
 
-Sim, teríamos que adicionar uma verificação no sistema que conseguisse validar que o NIF introduzido se encontrava válido
+Sim, teríamos que adicionar uma verificação no sistema que conseguisse validar que o NIF introduzido se encontrava válido.
+
+Outro problema seria que um dado utilizar poderia ficar na duvida de quantos digitos é que tinha que colocar no campo do NIF, visto ser em formato string, visualmente não permite perceber quantos dígitos faltam/são para escrever como na outra opção.
 
 *** (c) Esse problema existirá caso quem preenche o formulário seja um funcionário? Justifique.
 
-Sim, visto que um funcionário ao preencher um dado NIF do cliente pode cometer erros e introduzir um NIF errado.
-** 3
-
-TODO:: UTILIZAR A FERRAMENTA
+Sim, visto que um funcionário ao preencher um dado NIF do cliente pode cometer erros e introduzir um NIF errado, tal como mais dificilmente percebe quantos dígitos já escreveu.
 
 * 3.2 Erros de utilização
+** Página de registar da SEI
+
+O problema encontrado nesta página é que um determinado utilizador deveria preencher os campos de:
+
+- nickname
+- nome
+- email
+- password
+- confirmação da password
+
+para conseguir efetuar o registo na página da SEI.
+
+No entanto, ao submeter o registo se alguns dos campos não se encontrasse válido, apareceria uma única mensagem de erro para os diferentes tipos de erro.
+
+Este erro é do tipo slip.
