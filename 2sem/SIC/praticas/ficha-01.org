@@ -87,7 +87,7 @@ H mover a mão para o rato
 M preparação mental
 P apontar para o ficheiro
 B premir o botão do rato
-K premir o botão ^C
+K premir o botão ^D
 H mover a mão para o teclado
 #+end_src
 
@@ -183,5 +183,23 @@ O problema encontrado nesta página é que um determinado utilizador deveria pre
 para conseguir efetuar o registo na página da SEI.
 
 No entanto, ao submeter o registo se alguns dos campos não se encontrasse válido, apareceria uma única mensagem de erro para os diferentes tipos de erro.
+
+Este erro é do tipo slip.
+
+** Máquina do Burger King
+
+Ao utilizar a aplicação disponibilizada no Burger King, devido à interface não muito intuitiva pedi apenas um hamburguer quando a minha intenção era pedir um menu.
+
+Este erro é do tipo mistake.
+
+** Website de submissão de perfis UMinho
+
+Na página de submissão de perfis para o mestrado na Universidade do Minho, enquanto utilizadora, senti alguma dificuldade em entender o propósito de algumas opções, nomeadamente a de "Salvar", no sentido em que achei não existir informação suficiente disponível. Uma vez que a única opção para guardar alterações era a mencionada, penso que não ficou claro se serviria para submeter definitivamente as opções ou apenas guardar alterações efetuadas. Assim, sempre que pretendia alterar algo sentia a necessidade de apontar de alguma forma o estado atual da escolha, tentando assim evitar algum potencial erro.
+
+Este erro é do tipo lapse.
+
+** Interface do Instagram
+
+Na aplicação do Instagram foi alterada a ordem dos butões da interface, levando aos utilizadores clicarem nos butões erradas devido ao habito das posições anteriores.
 
 Este erro é do tipo slip.
