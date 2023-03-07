@@ -13,6 +13,13 @@ from ms import receiveAll, reply
 acquired = None
 requests = []
 
+timestamp = 0
+
+def notify_clients(client_id,timestamp):
+    for client in node_ids:
+        if client != client_id:
+            send(client_id, client, type="lock", timestamp=timestamp)
+
 for msg in receiveAll():
     match msg.body.type:
         case 'init':
@@ -22,6 +29,7 @@ for msg in receiveAll():
             reply(msg, type='init_ok')
         case 'lock':
             if not acquired:
+                notify_clients(node_id, timestamp)
                 reply(msg, type='lock_ok')
                 acquired = msg
             else:
@@ -31,6 +39,7 @@ for msg in receiveAll():
             if acquired and acquired.src == msg.src:
                 if requests:
                     acquired = requests.pop(0)
+                    notify_clients(node_id,timestamp)
                     reply(acquired, type='lock_ok')
                 else:
                     acquired = None

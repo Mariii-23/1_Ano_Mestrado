@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# A small wrapper script for invoking the Maelstrom jar, with arguments.
+
+exec java -Djava.awt.headless=true -jar maelstrom.jar "$@"
