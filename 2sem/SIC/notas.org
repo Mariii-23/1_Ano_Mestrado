@@ -1,0 +1,34 @@
+#+title: Notas
+
+* Aula 07-03-2023 :: slide 3
+** Conhecer os utilizadores
+~Nunca devemos ser nós o utilizador~
+~Nunca nós prórpios como modelo~
+
+** Classes de utilização
+- utilizadores diretos :: interagem diretamente no sistema
+- utilizadores indiretos :: interagem indiretamente
+
+  EX: quando vamos a uma biblioteca requisitar um livro e a senhora anota o nosso pedido, os alunos sao os utilizadores indiretos
+
+- utilizadores remotos :: interessados no funcionamento do sistema
+
+  EX: administradores do sistema ou assim
+
+- utilizadores de suporte
+
+- ou ainda ::
+  + se sao obrigados a utilizar o sistema ou nao
+
+    tipo nós somos obrigados a usar a blackboar
+
+  + intermitentes ou continuados
+
+
+Tanto os utilizaddores indiretos como remotos não costumam aparecer nos diagramas
+** Niveis de pericia
+"Analogia"
+- utilizadores inexperientes ::  tem medo de estragar
+- Executantes competentes ::  já nao tem tanto medo, experimentam e estragam o seu proprio sistema
+- peritos :: estragam o sistema dos outros
+** .
