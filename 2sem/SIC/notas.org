@@ -1,6 +1,6 @@
 #+title: Notas
 
-* Aula 07-03-2023 :: slide 3
+* Aula 07-03-2023 :: Tarefas
 ** Conhecer os utilizadores
 ~Nunca devemos ser nós o utilizador~
 ~Nunca nós prórpios como modelo~
@@ -31,4 +31,68 @@ Tanto os utilizaddores indiretos como remotos não costumam aparecer nos diagram
 - utilizadores inexperientes ::  tem medo de estragar
 - Executantes competentes ::  já nao tem tanto medo, experimentam e estragam o seu proprio sistema
 - peritos :: estragam o sistema dos outros
-** .
+
+* Aula 14-03-2023 :: Prototipagem
+** Estilos de interaçao
+é fundamental estabelecer o tipo de interface mais adequado
+
+*** Linha de commandos
+Utilizado mais por utilizadores experientes, visto ser mais rapido e pratico do que usar o rato.
+
+*** Menu-driven
+Melhores para ~utilizadores inexperientes~
+
+Precisamos de ter mais atencao como estao dispostas as opcoes (havendo uma hierarquia)
+
+** Prototipagem
+*** Podem ser de ~baixa~ ou de ~alta~.
+
+Exemplo de casa ou "renovacao?":
+
+- Baixa fidelidade :: construcao 3d
+- Alta fidelidade :: construcao real
+
+*** Throw-away vs evolucionários
+
+- throw-away :: depois da prototipagem e de aceite, passamos para a construcao e podemos deitar a prototipagem "ao lixo"
+
+- evolucionário :: na prototipagem desenvolvemos um sistema, e podemos usar isso para desenvolver a construção final
+
+** Protótipos de baixa fidelidade
+
+Protótipos horizontais (~só camada de IU~)
+
+Desenhos/capturas de écran
+
+Pode ser feito em papel ou com apoio de ferramentas.
+** Protótipos em papel
+De baixo custo e temos uma maior liberdade (principalmente em termos de abstração)
+** Mapas de navegação
+
+Conseguimos uma representação mais detalhada do nosso produto final
+* Aula 21-03-2023 :: Desenhar para a usabilidade
+** Principios de usabilidade
+- deve ser fácil de aprender
+- robusto :: permitir ao utilizador que tá a fazer as coisas (resistente ao erro)
+** 8 golden rules
+1. Consistencia
+2. permitir aos utilizadores frequentes utilizar atalhos
+3. fornecer feedback informativo
+4. mostrar dialogo ao utilizador (validacao..)
+5. oferecer prevenção de erros e tratamento dos mesmos
+6. permitir desfazer as ações
+7. suportar locus internos de controlo
+   devemos desenhar a interface de modo a que utilizador pense que está no controlo
+8. reduzir a memória de curto prazo do utilizador
+** heurísticas de nielse
+1. visibilidade do estado do sistema
+2. correspondência entre o sistema e o mundo real
+   "utilizar metáforas"
+3. controlo e liberdade do utilizador
+4. consistência e normas
+5. prevenção de erros
+6. reconhecer em vez de recordar
+7. flexibilidade e eficiência de utilização
+8. desenho estético e minimalista
+9. ajudar os utilizadores a reconhecer, diganosticar e recuperar de erros
+10. ajuda e documentação
