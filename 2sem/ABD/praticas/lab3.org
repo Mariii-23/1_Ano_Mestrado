@@ -1,0 +1,23 @@
+#+title: Lab3
+
++ o indice é sempre posto na tabela maior
++ quanto maior a tabela for, mais o indice tera impacto
+  N * log_2 M
+
+
+* Exercísio
+
+#+begin_src sql
+select p.id
+     from product p
+     join invoice i on i.productid = p.id
+     where i.clientid = ?
+#+end_src
+
+Neste exemplo o 1 indice deveria ser na tablea Invoice para conseguirmos filtrar por id
+
+Depois disso seria na tabela do produto.
+
+Ou seja, neste caso, deveriamos fazer primeiro o where e só depois o join.
+
+[[./exercisio.png]]
