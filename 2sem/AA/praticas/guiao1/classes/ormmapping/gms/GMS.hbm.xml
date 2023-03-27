@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Mariana Dinis Rodrigues(Universidade do Minho)
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="src.gms.GMS" table="GMS" lazy="false">
+		<id name="Id" column="Id" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<set name="ORM_User" lazy="true" cascade="all-delete-orphan" inverse="false">
+			<key column="GMSId" not-null="true"/>
+			<one-to-many class="src.gms.User"/>
+		</set>
+	</class>
+</hibernate-mapping>

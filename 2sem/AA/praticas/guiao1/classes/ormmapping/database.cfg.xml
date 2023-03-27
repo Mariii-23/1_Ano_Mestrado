@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Database>
+  <Setting type="32">
+    <Driver></Driver>
+    <DriverFiles></DriverFiles>
+    <Dialect></Dialect>
+    <DriverClass></DriverClass>
+    <URL></URL>
+    <UserName></UserName>
+    <EncryptedPassword>32F3ACE632ECEBAFB24DCAF99A8C6CDC</EncryptedPassword>
+    <HostName></HostName>
+    <PortNO></PortNO>
+    <DBName></DBName>
+    <ServiceName></ServiceName>
+    <ServerName></ServerName>
+    <SelectedForm>true</SelectedForm>
+  </Setting>
+  <Setting type="16">
+    <Driver></Driver>
+    <DriverFiles></DriverFiles>
+    <Dialect></Dialect>
+    <DriverClass></DriverClass>
+    <URL></URL>
+    <UserName></UserName>
+    <EncryptedPassword>32F3ACE632ECEBAFB24DCAF99A8C6CDC</EncryptedPassword>
+    <HostName></HostName>
+    <PortNO></PortNO>
+    <DBName></DBName>
+    <ServiceName></ServiceName>
+    <ServerName></ServerName>
+    <SelectedForm>true</SelectedForm>
+  </Setting>
+  <Setting type="256">
+    <Driver>PostgreSQL</Driver>
+    <DriverFiles>&lt;&lt;PostgreSQL 42.2.2&gt;&gt;</DriverFiles>
+    <Dialect>org.hibernate.dialect.PostgreSQLDialect</Dialect>
+    <DriverClass>org.postgresql.Driver</DriverClass>
+    <URL>jdbc:postgresql://localhost:5532/arquitetura</URL>
+    <UserName>postgres</UserName>
+    <EncryptedPassword>9AAAF93B1BE4A716681CCBB95679951F</EncryptedPassword>
+    <HostName>localhost</HostName>
+    <PortNO>5532</PortNO>
+    <DBName>arquitetura</DBName>
+    <ServiceName></ServiceName>
+    <ServerName></ServerName>
+    <SelectedForm>true</SelectedForm>
+  </Setting>
+</Database>
