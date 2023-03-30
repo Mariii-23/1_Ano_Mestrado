@@ -1,5 +1,4 @@
 import io.reactivex.rxjava3.core.Flowable;
-import io.reactivex.rxjava3.core.Single;
 
 import java.util.concurrent.TimeUnit;
 
@@ -43,8 +42,8 @@ public class Exercisio1 {
         ;
     }
 
-    public Single<Integer> m2_melhorada() {
-        return (Single<Integer>) Flowable.just(1,2)
+    public Flowable<Integer> m2_melhorada() {
+        return Flowable.just(1,2)
                 .flatMap(i -> op1(i))
                 .reduce(0, Integer::sum)
                 .map(this::op2);
