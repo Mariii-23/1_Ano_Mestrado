@@ -1,0 +1,15 @@
+#+title: Ficha5
+
+* 1. Comparar os sites
+
+** Site da UMinho actual:
+https://www.uminho.pt/PT
+
+- horizontal dropdown menu :: quando o utilizador necessita de navegar entre sections no website, mas o espaço para mostrar esse caminho é limitado
+
+- cards :: fornecer informaçõe sobre eventos futuros
+
+
+** Site da UMinho em 1998:
+
+http://web.archive.org/web/19981202055245/http://www.uminho.pt/
