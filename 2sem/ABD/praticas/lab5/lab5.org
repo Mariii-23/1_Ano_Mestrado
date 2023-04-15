@@ -1,0 +1,29 @@
+#+title: Lab5
+1. check
+
+2. Compute the number of titles per titleType.
+    +------------+-----+
+    |   titleType|count|
+    +------------+-----+
+    |   tvEpisode|73308|
+    |       short| 9083|
+    |       movie| 6375|
+    |       video| 2790|
+    |    tvSeries| 2388|
+    |     tvMovie| 1391|
+    |tvMiniSeries|  476|
+    |   tvSpecial|  423|
+    |   videoGame|  357|
+    |     tvShort|  106|
+    +------------+-----+
+
+3. Using the DataFrame function write.parquet(out folder)1 , export the titles DataFrame to Parquet.2
+
+4. Export the DataFrame again, using gzip compression, by providing the compression=’gzip’ parameter to write.parquet.
+
+   - TSV :: 8.3 MB
+   - Parquet default :: 3.8 MB
+   - Parquet gzip :: 2.6M
+
+
+TODOO ACABARRR
