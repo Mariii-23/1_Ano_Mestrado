@@ -59,4 +59,8 @@ public class Game {
     public void setPlatform(Platform platform) {
         this.platform = platform;
     }
+
+    public String getTitle() {
+        return this.name;
+    }
 }

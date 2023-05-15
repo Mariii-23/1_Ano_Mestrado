@@ -3,6 +3,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.Query;
 import org.hibernate.FlushMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -62,8 +63,19 @@ public class App
                 e.printStackTrace();
                 System.out.println("Unable to commit changes");
             }
+
+
+            Query query = s.createQuery("from Game g, Platform p where g.platform = p and p.year = 2010");
+            List results = ((org.hibernate.query.Query<?>) query).list();
+//index 0 - Game; index 1 - Platform
+            Object[] os = (Object[]) results.get(0);
+//cast
+            Game g = (Game) os[0];
+            System.out.println(g.getTitle());
+
             s.close();
             StandardServiceRegistryBuilder.destroy(sr);
+
         }catch(Exception e){
             e.printStackTrace();
             System.out.println("Unable to connect to database");
