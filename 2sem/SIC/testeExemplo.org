@@ -1,0 +1,58 @@
+#+title: Teste Exemplo
+
+* Parte 1
+
+** Questão 1
+- Match between system and the real world :: podia ter algo parecido com um relogio que desse para controlar
+
+  Outro fator é nao conseguirmos programar em minutos ou horas
+
+- Flexibility and efficiency of use :: cada pixel altera 1 segundo, ou seja conseguir mover X segundos precisos vai ser muito difícil
+
+** Questão 2
+- Modelo (a)
+- Modelo (b)
+
+** Questão 3
+- Os objectivos dos utilizadores para a interface
+- Os utilizadores que a vão utilizar
+- O contexto em que ela vai ser utilizada
+
+** Questão 4
+- linha de comando
+
+** Questão 5
+- Avaliação por Cognitive Walkthrough :: porque é uma avaliacao tendo em conta as "primeiras utilizações", ou seja utilizadores em experiencia
+
+
+** Questão 6
+- Familiarity
+
+- Recoverability
+
+- Synthesizability :: saber como a interface irá reagir consoante o que o utilizador fizer
+
+
+Customizability não é porque a pessoa só vai usar de vez enquanto
+
+** Questão 7
+O fosso da execução...
+
+- [ ] define a forma de utilização da interface.
+
+- [ ] representa o esforço de interpretação da informação fornecida pela interface. :: isto é o esforço de avaliação
+
+- [ ] define o modo como a interface é apresentada.
+
+- [X] pode ser minimizado por uma boa análise de tarefas.
+
+- [ ] é prejudicado por interfaces linha de comando (por exemplo, num terminal). :: depende de como as pessoas trabalham
+
+** Questão 8
+- CSS Grid
+- Bootstrap
+
+* Parte 2
+** Questão 9
+** Questão 10
+** Questão 11

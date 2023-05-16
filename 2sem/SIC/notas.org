@@ -54,7 +54,7 @@ Exemplo de casa ou "renovacao?":
 
 *** Throw-away vs evolucionários
 
-- throw-away :: depois da prototipagem e de aceite, passamos para a construcao e podemos deitar a prototipagem "ao lixo"
+- throw-away :: depois da prototipagem e de aceite, passamos para a construcao e podemos deitar a prototipagem "ao lixo" (usar e deitar fora)
 
 - evolucionário :: na prototipagem desenvolvemos um sistema, e podemos usar isso para desenvolver a construção final
 
@@ -96,3 +96,42 @@ Conseguimos uma representação mais detalhada do nosso produto final
 8. desenho estético e minimalista
 9. ajudar os utilizadores a reconhecer, diganosticar e recuperar de erros
 10. ajuda e documentação
+* Aula 28-03-2023 :: Design patterns
+
+- Breadcrumb Navigation :: Este padrão permite que os utilizadores voltem atrás em seus passos mostrando o caminho que eles percorreram para chegar à sua localização atual. É especialmente útil para aplicações com muito conteúdo.
+
+- Progressive Disclosure :: Este padrão é usado para simplificar a interface do usuário ocultando recursos avançados ou raramente usados até que sejam necessários.
+
+- Cards :: Este padrão é usado para exibir pequenos pedaços de informação de maneira visualmente atraente. Cada cartão contém uma pequena quantidade de informações e pode ser facilmente lido pelo utilizador.
+
+- feedback loop :: Use when you want to enable users to react immediately on feedback from previous actions.
+
+- inline hints :: fornecer ao utilizador informacoes sobre novas ou unfamiliar features na interface
+
+- Home link :: conseguir voltar ao ponto de start do site através
+
+- adaptable view ::  o utilizador consegue alterar o tamanho da fonte da letra
+
+* Aula 11-04-2023 :: Avaliacao
+** Avaliação de usabilidade
+- inspeccao por peritos :: identificar potenciais problemas
+- testes automatizados
+- métodos empíricos :: medir a realidade
+
+
+** metodos analiticos
+- a analise é realizada sem recorrer a utilizadores reais :: recorre se a prototipos/modelos do sistema
+
+  custo é mais baixo do que os ~metodos empiricos~
+
+- O principal objectivo é prever potenciais problemas de usabilidade (o que é diferente de avaliar a usabilidade).
+
+** avaliacao heuristica
+- Um conjunto de heurísticas é utilizado para guiar a análise.
+- Heurística :: Metodologia que conduz à sabedoria científica ou à
+resolução de problemas.
+* Aula 16-05-2023 :: Conclusão
+
+** teste
+
+- 2 folhas manuscritas
