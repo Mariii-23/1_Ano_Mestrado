@@ -40,15 +40,13 @@ Considere o algoritmo Raft. O processo falha enquanto líder e op é a última o
 #+end_quote
 
 
-No algoritmo Raft, quando um líder falha, inicia-se o processo de eleição para escolher-se um novo líder. Antes de iniciar o processo de eleição, um nó candidato tem que ter a certeza que o seu log encontra-se atualizado e em consistencia com a maioria dos outros nós.
+No algoritmo Raft, quando um líder falha, inicia-se o processo de eleição para escolher-se um novo líder. Desta forma um nó candidato envia ~RequestVote RPC~ a todos os outros nós e somente quando este alcança a maioria de votos é que este se torna líder.
 
-Durante esse processo, o candidato envia mensagens ~AppendEntries~ para as demais réplicas, contendo informações sobre as entradas do seu log, incluindo o índice da última entrada. Esta mensagem serve para solicitar aos seguidores que enviem as entradas correspondentes a partir desse índice. Com isto o nó candidato compara as entradas recebidas com as entradas no seu próprio log e no caso do seu log estiver desatualizado, este vai atualiza-lo.
+No entanto, um nó só irá aceitar o pedido de ~RequestVote~ de um candidato se este verificar que o log desse candidato está igual ou mais atualizado do que o seu próprio log.
 
-Somente quando o nó candidato alcança a correspondência de logs com a maioria dos nós e encontra-se atualizado com as operações anterios (incluindo a operação ~op~), é que pode prosseguir para a próxima fase de eleição. Fase de pedido de votos, durante este processo,  o nó vota em si mesmo e solicita votos dos demais nós. Para este ser eleito líder, precisa de receber votos de uma maioria de nós.
+Isto vai garantir que o candidato tenha conhecimento das operações anteriores (incluindo a operação ~op~) e que esteja sincronizado com as outras réplicas do sistema.
 
-Uma vez que tenha alcançado a maioria de votos, este torna-se líder e assume a responsabilidade de coordenar as operações do sistema.
-
-Dessa forma, o algoritmo Raft assegura que o novo líder tenha a operação "op" no seu log antes de fazer commit de outras operações, por meio do processo de recovery em que o líder sincroniza seu log com a maioria dos seguidores antes de prosseguir com novas operações. Isso garante a consistência e a ordem correta das operações no sistema distribuído.
+Dessa forma, após este ser eleito, temos a garantia que este tem conhecimento sobre a operação ~op~ antes de efetuar um qualquer  commit a outra operação.
 
 ** 4
 #+begin_quote
