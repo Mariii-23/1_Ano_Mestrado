@@ -1,0 +1,81 @@
+#+title: Teste
+
+* Teste 16 de maio de 2022
+** 1
+#+begin_quote
+Qual a necessidade de definirmos um modelo de computação e de faltas na resolução de um problema de sistemas distribuídos. Recorra a exemplos se lhe facilitar a exposição
+#+end_quote
+
+A definição de um modelo de computação e um modelo de faltas é fundamental na resolução de problemas em sistemas distribuídos. Esses modelos ajudam a estabelecer as suposições e restrições do ambiente em que o sistema distribuído opera, permitindo que os algoritmos e protocolos sejam projetados de forma adequada.
+
+
+- Um modelo de computação :: define como os nós do sistema distribuído interagem e se comunicam entre si. Ele especifica as características do ambiente de execução, incluindo o tipo de comunicação entre os nós, a latência da rede, a ordem de entrega das mensagens e a sincronização de relógios, entre outros aspectos.
+
+- Um modelo de faltas :: define os tipos de falhas que podem ocorrer nos nós do sistema distribuído. Essas falhas podem incluir nós que param de responder, transmissões de mensagens perdidas, latência excessiva na rede ou até mesmo nós que se comportam de maneira maliciosa. Ao especificar o modelo de faltas, os desenvolvedores podem projetar algoritmos e protocolos para lidar com essas falhas de maneira adequada.
+
+
+- Exemplo ::  Considere um sistema distribuído que precisa realizar a eleição de um líder entre os nós participantes. O modelo de computação pode especificar se os nós podem se comunicar diretamente ou se precisam passar por um processo de comunicação indireta, como o envio de mensagens por meio de um canal de broadcast. O modelo de faltas, por sua vez, pode especificar se os nós podem falhar de forma silenciosa, interrompendo completamente a comunicação, ou se podem se comportar de maneira maliciosa, enviando mensagens falsas. Com base nessas definições, podem ser projetados algoritmos de eleição que sejam adequados para o ambiente em questão, considerando as restrições e as ameaças potenciais.
+
+Em resumo, a definição de um modelo de computação e um modelo de faltas é essencial para projetar algoritmos e protocolos eficientes e seguros em sistemas distribuídos. Eles ajudam a estabelecer as suposições e restrições do ambiente de execução, permitindo que os desenvolvedores enfrentem os desafios específicos desse tipo de sistema.
+
+** 2
+
+#+begin_quote
+Explique porque recorremos à utilização de diferentes quoruns na replicação de dados?
+#+end_quote
+
+A utilização de diferentes quóruns na replicação de dados tem como objetivo equilibrar trade-offs em relação a disponibilidade, consistência e desempenho do sistema. Quóruns são conjuntos de réplicas que precisam responder a uma operação de leitura ou escrita para que ela seja considerada bem-sucedida.
+
+Existem duas principais razões para o uso de diferentes quóruns:
+
+- Tolerância a falhas :: Ao utilizar diferentes quóruns, é possível aumentar a tolerância a falhas do sistema. Por exemplo, um quórum pode ser configurado para incluir a maioria das réplicas disponíveis. Se algumas réplicas falharem, ainda será possível obter a maioria dos votos e realizar operações de leitura e escrita. Isso aumenta a disponibilidade do sistema, garantindo que ele continue funcionando mesmo na presença de falhas.
+
+- Consistência e desempenho :: O uso de diferentes quóruns também permite ajustar a consistência e o desempenho do sistema de acordo com os requisitos específicos. Por exemplo, um quórum de leitura pode ser configurado para incluir apenas algumas réplicas, o que resulta em leituras mais rápidas, mas potencialmente menos consistentes, já que as réplicas podem não ter a versão mais recente dos dados. Por outro lado, um quórum de escrita pode ser configurado para exigir um número maior de réplicas, garantindo uma maior consistência dos dados, mas com um impacto potencial no desempenho devido à necessidade de esperar pela confirmação de um maior número de réplicas.
+
+Dessa forma, a utilização de diferentes quóruns permite ajustar o equilíbrio entre disponibilidade, consistência e desempenho de acordo com as necessidades e requisitos específicos do sistema distribuído em questão. É importante encontrar um equilíbrio adequado que atenda aos objetivos do sistema e ofereça a combinação correta de tolerância a falhas, consistência dos dados e desempenho.
+
+** 3
+#+begin_quote
+Considere o algoritmo Raft. O processo falha enquanto líder e op é a última operação que faz commit. Como assegura o algoritmo que o líder seguinte tem op no seu log antes de fazer commit a outra operação?
+#+end_quote
+
+
+No algoritmo Raft, quando um líder falha, inicia-se o processo de eleição para escolher-se um novo líder. Antes de iniciar o processo de eleição, um nó candidato tem que ter a certeza que o seu log encontra-se atualizado e em consistencia com a maioria dos outros nós.
+
+Durante esse processo, o candidato envia mensagens ~AppendEntries~ para as demais réplicas, contendo informações sobre as entradas do seu log, incluindo o índice da última entrada. Esta mensagem serve para solicitar aos seguidores que enviem as entradas correspondentes a partir desse índice. Com isto o nó candidato compara as entradas recebidas com as entradas no seu próprio log e no caso do seu log estiver desatualizado, este vai atualiza-lo.
+
+Somente quando o nó candidato alcança a correspondência de logs com a maioria dos nós e encontra-se atualizado com as operações anterios (incluindo a operação ~op~), é que pode prosseguir para a próxima fase de eleição. Fase de pedido de votos, durante este processo,  o nó vota em si mesmo e solicita votos dos demais nós. Para este ser eleito líder, precisa de receber votos de uma maioria de nós.
+
+Uma vez que tenha alcançado a maioria de votos, este torna-se líder e assume a responsabilidade de coordenar as operações do sistema.
+
+Dessa forma, o algoritmo Raft assegura que o novo líder tenha a operação "op" no seu log antes de fazer commit de outras operações, por meio do processo de recovery em que o líder sincroniza seu log com a maioria dos seguidores antes de prosseguir com novas operações. Isso garante a consistência e a ordem correta das operações no sistema distribuído.
+
+** 4
+#+begin_quote
+Explique sucintamente os dois algoritmos de ordenacao total de mensagens apresentados nas aulas.
+#+end_quote
+
+- Consensus (Acordo) :: O algoritmo de Consensus é usado para alcançar um acordo entre vários participantes de um sistema distribuído sobre um valor ou sequência de valores. Este garante que todos os nós no sistema cheguem a um consenso sobre a decisão a ser tomada. O algoritmo de Consensus pode ser usado para ordenar mensagens, decidindo a sequência em que estas devem ser entregues. Um exemplo de algoritmo de Consensus é o algoritmo Raft, onde os nós participantes votam para eleger um líder que toma as decisões e coordena a ordenação das mensagens.
+
+- Atomic Broadcast :: É um algoritmo que garante que as mensagens são entregues a todos os nós do sistema de forma atômica e pela mesma ordem sem que nenhuma mensagem seja perdida ou entregue de forma inconsistente. Este algoritmo é usado para estabelecer uma ordenação total de mensagens nos sistemas distribuídos.
+
+
+Em resumo, o algoritmo de Consensus é usado para alcançar um acordo sobre um valor ou sequência de valores, que pode ser utilizado para ordenar as mensagens. Já o algoritmo de Atomic Broadcast garante que as mensagens sejam entregues a todos os nós de forma atômica e na mesma ordem, estabelecendo uma ordenação total das mensagens no sistema distribuído. Ambos os algoritmos desempenham um papel fundamental na garantia da consistência e ordenação correta das operações em sistemas distribuídos.
+
+
+* Pergunta
+#+begin_quote
+No protocolo de replicação passiva como é assegurada a linearização?
+#+end_quote
+
+No protocolo de replicação passiva, a linearização das transações é assegurada pelo uso de um mecanismo de coordenação, como o uso de um consenso distribuído ou uma primitiva de multicast atômico.
+
+Em geral, a linearização refere-se à garantia de que as transações sejam executadas em uma ordem total, mesmo que ocorram em diferentes réplicas do sistema. Isso significa que todas as réplicas devem executar as transações na mesma ordem, de modo que os resultados sejam consistentes em todas as réplicas.
+
+No contexto da replicação passiva, a linearização é alcançada garantindo que todas as réplicas recebam as mesmas operações na mesma ordem.
+
+Isso é feito usando técnicas como o atomic multicast, onde as operações são enviadas para um réplica primária que executa essa operação e envia o resultado para as demias réplicas, garantido que todas as réplicas recebem as mensagens pela mesma ordem, evitando inconsistências devido a possíveis atrasos ou perdas na comunicação.
+
+Ao usar o atomic multicast, as réplicas podem coordenar suas execuções de transações, garantindo que todas elas sigam a mesma ordem. Isso ajuda a evitar inconsistências e garante a linearização das transações em um sistema de replicação passiva.
+
+Em resumo, no protocolo de replicação passiva, a linearização das transações é assegurada pelo uso de um mecanismo de coordenação, como o atomic multicast, que garante que todas as réplicas recebam as mensagens pela mesma ordem, garantindo consistência e linearização das transações em todas as réplicas.
