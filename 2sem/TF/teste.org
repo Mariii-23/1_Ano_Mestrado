@@ -18,6 +18,8 @@ A definição de um modelo de computação e um modelo de faltas é fundamental 
 
 Em resumo, a definição de um modelo de computação e um modelo de faltas é essencial para projetar algoritmos e protocolos eficientes e seguros em sistemas distribuídos. Eles ajudam a estabelecer as suposições e restrições do ambiente de execução, permitindo que os desenvolvedores enfrentem os desafios específicos desse tipo de sistema.
 
+(podia se referir too que os modelos permitem-nos perceber se os problemas tem solucao e qual o custo delas)
+
 ** 2
 
 #+begin_quote
@@ -39,12 +41,15 @@ Dessa forma, a utilização de diferentes quóruns permite ajustar o equilíbrio
 Considere o algoritmo Raft. O processo falha enquanto líder e op é a última operação que faz commit. Como assegura o algoritmo que o líder seguinte tem op no seu log antes de fazer commit a outra operação?
 #+end_quote
 
+No algoritmo de Raft, o líder deverá, inevitavelmente, guardar todas as entradas que foram commited até ao momento e assegurar que todas as entradas que foram commited em termos anteriores estarão presentes num novo líder desde o momento da sua eleição.
 
-No algoritmo Raft, quando um líder falha, inicia-se o processo de eleição para escolher-se um novo líder. Desta forma um nó candidato envia ~RequestVote RPC~ a todos os outros nós e somente quando este alcança a maioria de votos é que este se torna líder.
 
-No entanto, um nó só irá aceitar o pedido de ~RequestVote~ de um candidato se este verificar que o log desse candidato está igual ou mais atualizado do que o seu próprio log.
+Quando um líder falha, inicia-se o processo de eleição para escolher-se um novo líder. Desta forma um nó candidato envia ~RequestVote RPC~ a todos os outros nós e somente quando este alcança a maioria de votos é que este se torna líder.
 
-Isto vai garantir que o candidato tenha conhecimento das operações anteriores (incluindo a operação ~op~) e que esteja sincronizado com as outras réplicas do sistema.
+No entanto, um nó (Follower) só irá aceitar o pedido de ~RequestVote~ de um candidato se este verificar que o log desse candidato está igual ou mais atualizado do que o seu próprio log.
+(Se a ultima entrada de um log tiver um term diferente da ultima entrada do outro, entao o log com o termo mais elevado esta mais atualizado. Se ambos terminarem com uma entrada com o mesmo mandato, entao o llog com maior comprimento é o mais atualizado.)
+
+Uma vez que uma entrada commited estará presente numa maioria dos nodos e o candidato precisa de uma maioria dos nodos para ganhar a eleição, garantimos que o candidato apenas será eleito se tiver todas as entradas que foram commited (operações anteriores, incluindo a operação ~op~).
 
 Dessa forma, após este ser eleito, temos a garantia que este tem conhecimento sobre a operação ~op~ antes de efetuar um qualquer  commit a outra operação.
 
@@ -60,20 +65,3 @@ Explique sucintamente os dois algoritmos de ordenacao total de mensagens apresen
 
 Em resumo, o algoritmo de Consensus é usado para alcançar um acordo sobre um valor ou sequência de valores, que pode ser utilizado para ordenar as mensagens. Já o algoritmo de Atomic Broadcast garante que as mensagens sejam entregues a todos os nós de forma atômica e na mesma ordem, estabelecendo uma ordenação total das mensagens no sistema distribuído. Ambos os algoritmos desempenham um papel fundamental na garantia da consistência e ordenação correta das operações em sistemas distribuídos.
 
-
-* Pergunta
-#+begin_quote
-No protocolo de replicação passiva como é assegurada a linearização?
-#+end_quote
-
-No protocolo de replicação passiva, a linearização das transações é assegurada pelo uso de um mecanismo de coordenação, como o uso de um consenso distribuído ou uma primitiva de multicast atômico.
-
-Em geral, a linearização refere-se à garantia de que as transações sejam executadas em uma ordem total, mesmo que ocorram em diferentes réplicas do sistema. Isso significa que todas as réplicas devem executar as transações na mesma ordem, de modo que os resultados sejam consistentes em todas as réplicas.
-
-No contexto da replicação passiva, a linearização é alcançada garantindo que todas as réplicas recebam as mesmas operações na mesma ordem.
-
-Isso é feito usando técnicas como o atomic multicast, onde as operações são enviadas para um réplica primária que executa essa operação e envia o resultado para as demias réplicas, garantido que todas as réplicas recebem as mensagens pela mesma ordem, evitando inconsistências devido a possíveis atrasos ou perdas na comunicação.
-
-Ao usar o atomic multicast, as réplicas podem coordenar suas execuções de transações, garantindo que todas elas sigam a mesma ordem. Isso ajuda a evitar inconsistências e garante a linearização das transações em um sistema de replicação passiva.
-
-Em resumo, no protocolo de replicação passiva, a linearização das transações é assegurada pelo uso de um mecanismo de coordenação, como o atomic multicast, que garante que todas as réplicas recebam as mensagens pela mesma ordem, garantindo consistência e linearização das transações em todas as réplicas.

@@ -1,0 +1,50 @@
+#+title: Teste 11 06 2019
+* 1
+#+begin_quote
+ Nas aulas estudamos 3 formas distintas de redundância: de espaço, de tempo e de valor. Diga o que entende por cada uma delas e dê um exemplo da sua utilização conjunta numa aplicação.
+#+end_quote
+* 2
+#+begin_quote
+No protocolo de replicação passiva como é assegurada a linearização?
+#+end_quote
+
+No protocolo de replicação passiva, a linearização das transações é assegurada pelo uso de um mecanismo de coordenação, como o uso de um consenso distribuído ou uma primitiva de multicast atômico.
+
+Em geral, a linearização refere-se à garantia de que as transações sejam executadas em uma ordem total, mesmo que ocorram em diferentes réplicas do sistema. Isso significa que todas as réplicas devem executar as transações na mesma ordem, de modo que os resultados sejam consistentes em todas as réplicas.
+
+No contexto da replicação passiva, a linearização é alcançada usando técnicas como o atomic multicast, onde existe a designação de uma réplica primária e todas as operações serão enviadas para esta. A réplica primária ficará responsável por executar essa operação e enviar o resultado para as demais réplicas, garantido que todas as réplicas recebem, pela mesma ordem, as mensagens, evitando inconsistências devido a possíveis atrasos ou perdas na comunicação.
+
+Ao usar o atomic multicast, as réplicas podem coordenar as suas execuções de transações, garantindo que todas elas seguem a mesma ordem. Isso ajuda a evitar inconsistências e garante a linearização das transações em um sistema de replicação passiva.
+* 3
+#+begin_quote
+Explique sucintamente a diferença de execução conservadora (conservative execution) e execução optimista (optimistic execution) nos protocolos de replicação de bases de dados estudados?
+#+end_quote
+
+
+A grande diferença entre estas 2 execuções encontra-se na forma como as transações são tratadas em relação aos possíveis conflitos.
+
+Na execuçao ~conservadora~, os protocolos de replicação adotam uma abordagem cautelosa e de prevenção de conflitos. Antes de uma transação ser executada esta é classificada em classes de conflito com base nas operações e recursos utilizados e adiciona a uma lista de queues. Cada queue irá representar transações classificadas na mesma classe de conflito.
+Uma dada transação apenas será efetuada se estiver à cabeça de todas as listas.
+
+Com isto conseguimos evitar conflitos e garantir a consistencia dos dados, na medida em que as transações são ordenadas de acordo com a sua classificação de conflito evitando executar essas transaçes simutaneamente, e permitindo executar outras operações em paralelo desde que sejam de conflitos diferentes.
+
+Já a execução ~otimista~, assume que os conflitos são raros e permitem que as transações sejam executadas concorrentemente, mesmo que sejam transações conflitantes. Apenas após a execução, é que ocorre verificação de conflitos e em caso de ser detatado um conflito, mecanismos de resolução de conflitos vão ser aplicados, como a reversão de uma ou mais transações envolvidas no conflito.
+
+
+Para concluir, a execução conservadora prioriza a prevenção de conflitos e a consitência de dados, enquanto que a execução otimista assume que os conflitos são raros e permite que as transações sejam executadas de forma independente, resolvendo conflitos posteriormente, se necessário. A escolha entre estes dois tipos de execução vai depender das características e requisitos do sistema distribuído em questão.
+
+
+* 4
+#+begin_quote
+Considere o trabalho prático e a sua resolução com replicação activa. Como pode garantir que na entrada de um novo servidor no grupo minimiza os dados transferidos?
+#+end_quote
+
+VER MELHOR
+
+- mandar uma copia dos dados atuais de um servidor existente para o novo servidor
+- ao transferir apenas o snapsho incial em vez de todo o historio de transacoes, é possivel minimizar aquantidade de dados transferidos.
+- apos esta transferencia o novo servidor pode conectar-se ao grupo e sincronizar-se com os servidores existentes
+- usar mecanismos de replicacao, como logs e tal
+- desta forma o servidor pode atualizar os seus dados para ficar em sicnronia com os outros servidoeres sem a necessidade de transferir novamente todos osdaods.
+
+Essa abordagem de sincronização inicial reduz a carga de transferência de dados durante a entrada de um novo servidor no grupo, minimizando o tempo de inatividade e melhorando a eficiência do processo de replicação ativa. No entanto, é importante garantir que o snapshot inicial esteja atualizado e seja consistente em relação aos dados existentes no momento da entrada do novo servidor.

@@ -1,0 +1,25 @@
+#+title: Teste 27 05 2019
+
+* 1
+#+begin_quote
+Considere uma solução S para um problema P num modelo M de um sistema distribuído. Que tipo de pressupostos estudou que alterados em M poderão levar S a deixar de ser uma solução para P?
+#+end_quote
+
+* 2
+#+begin_quote
+No protocolo de replicação passiva como é assegurada a linearização?
+#+end_quote
+
+Feito no outro
+
+* 3
+#+begin_quote
+Explique sucintamente os dois algoritmos de total order multicast apresentados nas aulas.
+#+end_quote
+
+Feito no outro
+
+* 4
+#+begin_quote
+Considere o trabalho prático e a sua resolução com replicação activa. Como pode garantir que na entrada de um novo servidor no grupo minimiza os dados transferidos?
+#+end_quote

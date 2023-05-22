@@ -1,0 +1,44 @@
+#+title: Teste 16 07 2019
+
+
+
+* 1
+#+begin_quote
+Do ponto de vista da adequação do modelo aos sistemas informáticos distribuídos correntes, qual a sua opinião sobre considerar que o modelo de computação é assíncrono e o de faltas é fail-stop?
+#+end_quote
+
+
+- assincrono :: nao se pode fazer assuncoes no que toca ao tempo, só se sabe que eventualmetne vai chegar
+
+  - atrasos na rede
+  - falhas na comunicacao
+  - garantir ordem das mensagens
+  - ter cuidado com mensagens do passado
+  - varios pedidos a ser lidados ao mesmo tempo
+
+- fail-stop :: é considerar que uma réplica do sistema, após falhar, permanece em baixo, sendo esta falha detetável por outras réplicas
+
+  - assume que os nós podem falhar, mas quando isso aconte o nó para de funcionar
+
+  - manter o estado consistente
+
+Em suma, considerar o modelo de computação como assíncrono e o modelo de faltas como fail-stop é uma abordagem adequada para sistemas distribuídos correntes, levando em conta as características e desafios comuns encontrados nesse ambiente. No entanto, a escolha do modelo depende do contexto e das especificidades do sistema em questão.
+
+* 2
+
+#+begin_quote
+ Considere o problema de Consensus definido e estudado nas aulas. Explique sucintamente as suas 3 condições e mostre que com apenas 2 tem sempre soluções triviais.
+#+end_quote
+
+
+Existem 3 condicoes ::
+- nao trivialidade :: a operacao escolhida tem q ser uma das propostas
+- acordo :: todas as replicas escolhem a mesma operacao
+- terminacao :: inevitavelmente há uma escolha, por parte de todas as réplicas não defeituosas
+
+
+Com apenas 2 destas condições temos sempre soluções triviais:
+
+- sem a nao trivialidade :: as replicas poderiam escolher nao fazer nada
+- sem o acordo :: as replicas poderiam executar seempre a primeira operacao que lhes fosse proposta
+- sem a terminacao ::  as replicas poderiam ficar sempre num ciclo infinito sem decidir nada
