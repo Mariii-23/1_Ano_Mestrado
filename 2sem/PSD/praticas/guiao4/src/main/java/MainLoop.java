@@ -9,19 +9,23 @@ import java.nio.ByteBuffer;
 import java.nio.channels.*;
 import java.nio.channels.spi.SelectorProvider;
 import java.util.Iterator;
-import java.util.concurrent.Flow;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class MainLoop {
     private Selector sel;
+    private Flowable<ByteBuffer> flow;
+    SelectionKey key;
 
-    private class ReadSubscription implements Flow.Subscription {
+
+    private class ReadSubscription implements Subscription {
         private long credits = 0;
         private ReentrantLock lock = new ReentrantLock();
         private SelectionKey key;
+        private Subscriber<? super ByteBuffer> subscribe;
 
         public ReadSubscription(SelectionKey key, Subscriber<? super ByteBuffer> subscriber) {
             this.key = key;
+            this.subscribe = subscriber;
         }
 
         public void request(long n) {
@@ -48,27 +52,29 @@ public class MainLoop {
         while (true) {
             sel.select();
             for (Iterator<SelectionKey> i = sel.selectedKeys().iterator(); i.hasNext();) {
-                SelectionKey key = i.next();
+                key = i.next();
                 // i/o
                 if (key.isAcceptable()) {
                     //there is a pending accept
-                    var sub = (ObservableEmitter<SocketChannel>) key.attachment();
+                    ObservableEmitter<SocketChannel> sub = (ObservableEmitter<SocketChannel>) key.attachment();
                 }
                 if (key.isWritable()) {
                     //there is a pending write
                     if (key.attachment() instanceof Flowable) {
-                        Flowable<ByteBuffer> flow = (Flowable<ByteBuffer>) key.attachment();
+                        ReadSubscription sub = (ReadSubscription) key.attachment();
+                        flow = (Flowable<ByteBuffer>) key.attachment();
                         write(flow, (SocketChannel) key.channel());
                     }else{
-                        flow.request(1);
+                        ReadSubscription sub = (ReadSubscription) key.attachment();
+                        sub.request(1);
                         key.interestOpsAnd(~SelectionKey.OP_WRITE);
                     }
                 }
                 if (key.isReadable()) {
                     //there is a pending read
-                    MySubcription sub = (MySubcription) key.attachment();
+                    ReadSubscription sub = (ReadSubscription) key.attachment();
 
-                    sub.subscribe.onNext(bb);
+                    sub.subscribe.onNext(ByteBuffer.allocate(1024));
                     if (sub.credits == 0)
                         key.interestOpsAnd(~SelectionKey.OP_READ);
                 }
@@ -77,15 +83,16 @@ public class MainLoop {
     }
 
     public Flowable<ByteBuffer> read(SocketChannel s) {
+        final SocketChannel s2 = s;
         return new Flowable<ByteBuffer>() {
             @Override
             protected void subscribeActual(Subscriber<? super ByteBuffer> subscriber) {
                 try {
-                    s.configureBlocking(false);
-                    SelectionKey key = s.register(sel, 0);
+                    s2.configureBlocking(false);
+                    key = s2.register(sel, 0);
                     ReadSubscription sub = new ReadSubscription(key, subscriber);
                     key.attach(sub);
-                    subscriber.onSubscribe((Subscription) sub);
+                    subscriber.onSubscribe(sub);
                 } catch (IOException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -96,10 +103,11 @@ public class MainLoop {
 
 
     public void write(Flowable<ByteBuffer> flow, SocketChannel s){
+        final SocketChannel s2 = s;
         flow.subscribe(new DefaultSubscriber<ByteBuffer>(){
             public void onStart() {
                 try {
-                    SelectionKey key = s.register(sel, SelectionKey.OP_WRITE);
+                    key = s2.register(sel, SelectionKey.OP_WRITE);
                 } catch (ClosedChannelException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -108,9 +116,10 @@ public class MainLoop {
             }
             public void onNext(ByteBuffer b) {
                 try {
-                    s.write(b);
+                    s2.write(b);
                 } catch (IOException e) {
-                    throw new RuntimeException(e);
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
                 }
                 if (b.hasRemaining()){
                     key.interestOpsOr(SelectionKey.OP_WRITE);
@@ -130,5 +139,4 @@ public class MainLoop {
             }
         });
     }
-
 }

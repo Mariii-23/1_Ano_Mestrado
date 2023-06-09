@@ -34,15 +34,24 @@ def can_be_delivered(msg):
 
         if can_be_delivered:
             vv[sender] += 1
+            element = msg.body.element
             match msg.body.type:
-                case "add":
-                    element = msg.body.element
+                # case "add":
+                #     if element not in array:
+                #         array.append(element)
+                #         broadcast(type='fwd_add', vv=vv, element=element)
+                case 'fwd_add':
                     if element not in array:
                         array.append(element)
-                case "remove":
-                    element = msg.body.element
+                # case "remove":
+                #     if element in array:
+                #         array.remove(element)
+                #         broadcast(type='fwd_remove', vv=vv, element=element)
+                case 'fwd_remove':
                     if element in array:
                         array.remove(element)
+                # case 'read':
+                #     reply(msg, type='read_ok', value=array)
             return can_be_delivered
 
     return not can_be_delivered
@@ -72,10 +81,13 @@ for msg in receiveAll():
             reply(msg, type='init_ok')
 
         case 'add':
-            vv[node_id] += 1
             reply(msg, type='add_ok')
             logging.info('Add')
 
+            # if not can_be_delivered(msg):
+            #     received.append(msg)
+            # else:
+            vv[node_id] += 1
             element = msg.body.element
             if element not in array:
                 array.append(element)
@@ -96,16 +108,18 @@ for msg in receiveAll():
                     new_delivery = retest_deliveries()
 
         case 'remove':
-            vv[node_id] += 1
 
             reply(msg, type='remove_ok')
             logging.info('Remove')
 
+            # if not can_be_delivered(msg):
+            #     received.append(msg)
+            # else:
+            vv[node_id] += 1
             element = msg.body.element
             if element in array:
                 array.remove(element)
-
-            broadcast(type='fwd_remove', vv=vv, element=element)
+                broadcast(type='fwd_remove', vv=vv, element=element)
 
 
         case 'fwd_remove':
@@ -121,5 +135,6 @@ for msg in receiveAll():
                     new_delivery = retest_deliveries()
 
         case 'read':
-            reply(msg, type='read_ok', value=array)
+
             logging.info('Read')
+            reply(msg, type='read_ok', value=array)

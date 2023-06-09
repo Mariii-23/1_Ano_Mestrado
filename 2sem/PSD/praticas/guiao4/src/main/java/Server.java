@@ -1,6 +1,5 @@
 import java.net.InetSocketAddress;
 import java.nio.channels.ServerSocketChannel;
-import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
 
 import static io.reactivex.rxjava3.schedulers.Schedulers.computation;
@@ -14,10 +13,10 @@ public class Server {
             var s_flow = loop.read(conn)
                     .observeOn(computation())
                     .lift(new LineSplitOperator())
-                    .map(bb -> StandardCharsets.UTF_8.decode(bb))
+                    .map(StandardCharsets.UTF_8::decode)
                     .map(String::toUpperCase)
-                    .map(s -> StandardCharsets.UTF_8.encode(s));
-            //loop.write(s_flow, conn); ??
+                    .map(a -> StandardCharsets.UTF_8.encode(a));
+            loop.write(s_flow, conn);
         });
     }
 }

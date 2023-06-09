@@ -1,0 +1,16 @@
+ProxyPass / balancer://mycluster/ stickysession=JSESSIONID|jsessionid
+ProxyPassReverse / balancer://tutcluster/
+ProxyPassReverse / http://localhost:8080/
+ProxyPassReverse / http://localhost:8000/
+ProxyPreserveHost On
+ProxyRequests Off
+
+<Location / >
+Order deny,allow
+Allow from All
+</Location>
+
+<Proxy balancer://mycluster/>
+BalancerMember http://localhost:8080 route=node1 retry=60
+BalancerMember http://localhost:8000 route=node2 retry=60
+</Proxy>
